@@ -3,7 +3,7 @@ title: Experience
 menus:
   main:
     title: Experience
-    weight: 3
+    weight: 1
 layout: page
 ---
 
