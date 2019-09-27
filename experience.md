@@ -8,9 +8,13 @@ layout: page
 ---
 ## Currently (2017 - present): Owner @ [CodeStream](https://www.codestream.co.za)
 
+**Durban, South Africa**
+
 CodeStream does most of it's work
 
-### 2015 - 2017: CTO @ SMEasy (Durban, South Africa)
+### 2015 - 2017: CTO @ SMEasy
+
+**Durban, South Africa**
 
 Allen worked as CTO of SMEasy, coordinating and managing all technical aspects of this exciting online accounting package startup for small to medium sized enterprises. His role was multi-faceted and included the following:
 
@@ -37,7 +41,7 @@ As a consultant working for Digiterre I worked primarily as the team lead on a l
 
 The solution we provided made use of Oracle, server side service components and a WPF user interface. The system worked on large sets of data output by models and involved a series of calculations and data manipulation in order to output the required reports and data analysis required by the business.
 
-### 2010 - 2011: Developer @ [MAN Investments](https://www.man.com/GB/home)
+### 2010 - 2011: Developer @ [MAN Investments](https://www.man.com/GB/home) (London, UK)
 
 **System Integration / Fx / Fund Accounting / Fee Calculation**
 
@@ -47,8 +51,18 @@ The team, used SCRUM to run and manage month long sprints. SCRUM teams were loca
 
 I have worked on various different systems including middle office fund accounting, Fee calculation, Foreign Exchange and Trade planning.
 
-### 2009 - 2010: Developer @ [BritInsurance](http://www.britinsurance.com/)
+### 2009 - 2010: Developer @ [BritInsurance](http://www.britinsurance.com/) (London, UK)
 
-I worked on a team of eight developing an online policy management system enabling BritInsurance to manage insurance sold through their network of brokers. The system was loosely coupled employing a publish/subscribe messaging model implemented with NServiceBus to achieve decoupling of logically separate components, high availability and reduce dependencies on other systems.
+I worked on a team of eight developing an online policy management system enabling BritInsurance to manage insurance sold through their network of brokers. The system was loosely coupled employing a publish/subscribe messaging model implemented with NServiceBus to achieve decoupling of logically separate components, high availability and reduce dependencies on other systems.
 
 The team worked in an agile fashion using a continuous integration environment (Team City) alongside unit and integration testing and automated deployment to provide timely feedback to developers on the health of the codebase as a whole. A Kanban board was used to monitor and manage the project’s progress and the team operated in a self-managing style with emphasis on distribution of system knowledge among the whole team and each member taking responsibility for the whole system.
+
+### 2008 - 2009: Developer @ [Freshfields Bruckhaus Derringer](http://www.freshfields.com/) (London, UK)
+
+**Contact & event management** 
+
+Allen worked on a team developing a contact and event management system for the management of business contacts and targeted communications with specific groupings of contacts about business events and full life-cycle tracking of those events. The application was developed using ASP.NET MVC and jQuery for client-side asynchronous UI updates.
+
+**Budgeting management tool**
+
+Allen worked as part of large team developing a budgeting application for the firms internal budgeting and cost monitoring of matters. The application was a web based tool relying on data from disparate systems from finance to firm control work management systems. Users of the system would budget costs of estimated work catering for different partners, fee-earners and other resources at different exchange rates. The budget was then eventually compared against actual outcomes of work done on a matter and various reports were available to help monitor the progress of a budget.
