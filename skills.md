@@ -1,5 +1,5 @@
 ---
-title: SKILLS
+title: Skills
 layout: page
 ---
 
