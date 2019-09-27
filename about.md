@@ -1,6 +1,6 @@
 ---
 title: About Me
-subtitle: 'This is me, this is what I do.'
+subtitle: ''
 img_path: ''
 menus:
   main:
@@ -18,10 +18,4 @@ He now runs his own software development consultancy [CodeStream](https://www.co
 
 The core principles of his software development philosophy are **simplicity**, **testing** and **automation**.
 
-> Keep it simple, if a junior struggles to understand what's going on it's probably too complex.
->
-> Test everything, if it ain't tested, it will break.
->
-> Automate everything, if you have to do it, you will break it.
-
-__
+> Keep it simple, Test everything, Automate always
