@@ -1,20 +1,27 @@
 ---
 title: About Me
-subtitle: This is a short page about me and my work.
-img_path: images/about.jpg
+subtitle: 'This is me, this is what I do.'
+img_path: ''
 menus:
   main:
     title: About
     weight: 2
 layout: page
 ---
+**Allen Firth** is a software  architect / developer from **Durban, South Africa**. He studied correspondence through the University of South Africa whilst at the same time working at small software development consultancies based in Durban. In **2003** he obtained his **Bachelors Degree in Informatics**. 
 
-**John Doe** is a Senior Art Director from [Stockholm](https://en.wikipedia.org/wiki/Stockholm), Sweden. After graduating from The College of Visual Arts with a degree in Communication Design, he worked for three small graphic design shops where he honed his design style and sensibility.
+Allen spent six and a half years expanding his technical horizons in **London, England**, working for some of the United Kingdoms premier corporations in **Law, Insurance and Finance**.
 
-His work has been recognized by Communication Arts, Print, How, ID, IdN, AIGA, Effie, Archive, Graphis, AdFed and Rockport. Graphic Design USA named him a person to watch in 2019.
+Today Allen has close to **two decades** worth of _in the trenches_ software development experience with a broad exposure to different industries and software development methodologies. 
 
->The world always seems brighter when you’ve just made something that wasn’t there before. <cite>Neil Gaiman</cite>
+He now runs his own software development consultancy [CodeStream](https://www.codestream.co.za).
 
-As a hobby, John Doe authors the most influential design blog in Sweden with over 100,000 page views a month. He lives in Stockholm with his beautiful wife and two boys.
+The core principles of his software development philosophy are **simplicity**, **testing** and **automation**.
 
-*Thank You for reading!*
+> Keep it simple, if a junior struggles to understand what's going on it's probably too complex.
+>
+> Test everything, if it ain't tested, it will break.
+>
+> Automate everything, if you have to do it, you will break it.
+
+__
