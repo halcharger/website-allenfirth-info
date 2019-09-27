@@ -8,18 +8,21 @@ sections:
     section_id: hero
     type: heroblock
   - actions:
-      - label: Contact Me
-        url: /contact
       - label: Skills
         url: /skills
       - label: Experience
         url: /experience
+      - label: Contact Me
+        url: /contact
     component: content_block.html
     content: >-
-      This is the "about" excerpt. It can be used to provide a paragraph about
-      yourself that people can read on the homepage to get a sense of who you
-      are. There also exists a dedicated about page where you can write more
-      about yourself for those who are interested.
+      I've been developing applications for close to two decades now. The tools
+      of my trade being C#, Javascript / Angular, relational or document
+      databases and Microsoft Azure.
+
+
+      I've worked for small startups and I've worked for global multi-national
+      corporations. Like I said I like building things.
     section_id: about
     title: About
     type: contentblock
