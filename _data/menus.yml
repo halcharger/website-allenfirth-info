@@ -1,4 +1,16 @@
 main:
+  - identifier: home
+    title: Home
+    url: /home
+  - identifier: about
+    title: About
+    url: /about
   - identifier: skills
     title: Skills
     url: /skills
+  - identifier: experience
+    title: Experience
+    url: /experience
+  - identifier: contact
+    title: Contact
+    url: /contact
