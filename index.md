@@ -26,10 +26,13 @@ sections:
 
 
       I've got a **Bachelors Degree in Informatics** from the University of
-      South Africa (2004) as well being certified as a **Microsoft Certified
-      Solutions Developer** since 2000. But as you know certificates mean little
-      and my two decades of hands on experience speak volumes are what inform my
-      decisions.
+      South Africa (2003) as well as being certified as a **Microsoft Certified
+      Solutions Developer** since 2000. 
+
+
+      But as you know certificates mean little and my two decades of hands on
+      experience speak volumes and for the basis for my technical decision
+      making.
     section_id: about
     title: About
     type: contentblock
