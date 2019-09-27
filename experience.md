@@ -30,3 +30,19 @@ As a consultant working for Digiterre, I worked with four other Digiterre consul
 [EDF Trading](http://www.edftrading.com/)
 
 As a consultant working for Digiterre, I worked on a small team of four developers in a highly agile fashion developing a small Master Data Management system and an Initial Margins tool used to calculate initial margins on all EDF Trading energy positions which would then be reconciled with the initial margin positions as specified by the clearing houses. The application wrapped a third party tool which performed the calculations and facilitated an automated process whereby input data from EDF systems was loaded on a daily basis and initial margin reports were automatically generated for the business to reconcile.
+
+[EON ](https://www.eon.com/en/business-areas/trading.html)- Transfer Pricing Tool
+
+As a consultant working for Digiterre I worked primarily as the team lead on a large project for an EON Energy Trading developing a Transfer Pricing management tool. The project team was spread over London, Dusseldorf and India and required strong coordination and communication to keep the project on track. In the last two years we have brought this project to completion and are now in the process of handing it over for support and maintenance to an outsourced provider chosen by the EON.
+
+The solution we provided made use of Oracle, server side service components and a WPF user interface. The system worked on large sets of data output by models and involved a series of calculations and data manipulation in order to output the required reports and data analysis required by the business.
+
+### 2010 - 2011: Developer @ [MAN Investments](https://www.man.com/GB/home)
+
+**System Integration / Fx / Fund Accounting / Fee Calculation**
+
+Allen worked in a geographically distributed team on systems integration of multiple disparate applications in the middle office of the worlds largest Fund of funds. The development team facilitated systems communication between various data sources and applications using a variety of request/response and publish/subscribe messaging solutions built on Oracle weblogic / MSMQ and a custom in-house messaging buses.
+
+The team, used SCRUM to run and manage month long sprints. SCRUM teams were located in different offices and communication was paramount to successfully completing work. Part of the teams mandate was to introduce in increasing measures the principles of Agile development, increase the test coverage of the code base and strongly push the ethos of TDD.
+
+I have worked on various different systems including middle office fund accounting, Fee calculation, Foreign Exchange and Trade planning.
