@@ -18,7 +18,7 @@ sections:
     content: >-
       I've been developing applications for close to two decades now. The tools
       of my trade being **C#, Javascript / Angular, relational or document
-      databases and Microsoft Azure**.
+      databases, Git, Microsoft Azure & Azure DevOps**.
 
 
       I've worked for small startups and I've worked for global multi-national
