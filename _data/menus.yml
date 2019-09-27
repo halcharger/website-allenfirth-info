@@ -1,7 +1,1 @@
-main:
-  - identifier: skills
-    title: Skills
-    url: /skills
-  - identifier: experience
-    title: Experience
-    url: /experience
+main: []
