@@ -7,7 +7,7 @@ subtitle: >-
 menus:
   main:
     title: Style Guide
-    weight: 6
+    weight: ''
 layout: page
 ---
 ****
