@@ -17,12 +17,19 @@ sections:
     component: content_block.html
     content: >-
       I've been developing applications for close to two decades now. The tools
-      of my trade being C#, Javascript / Angular, relational or document
-      databases and Microsoft Azure.
+      of my trade being **C#, Javascript / Angular, relational or document
+      databases and Microsoft Azure**.
 
 
       I've worked for small startups and I've worked for global multi-national
-      corporations. As I said I like building things.
+      corporations. As I said I like building things. 
+
+
+      I've got a **Bachelors Degree in Informatics** from the University of
+      South Africa (2004) as well being certified as a **Microsoft Certified
+      Solutions Developer** since 2000. But as you know certificates mean little
+      and my two decades of hands on experience speak volumes are what inform my
+      decisions.
     section_id: about
     title: About
     type: contentblock
