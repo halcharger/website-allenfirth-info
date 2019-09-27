@@ -6,11 +6,11 @@ menus:
     weight: 4
 layout: page
 ---
-# Currently (2017 - present): CodeStream
+## Currently (2017 - present): Owner @ CodeStream
 
 CodeStream does most of it's work
 
-# 2015 - 2017: SMEasy, CTO
+### 2015 - 2017: CTO @ SMEasy
 
 Allen worked as CTO of SMEasy, coordinating and managing all technical aspects of this exciting online accounting package startup for small to medium sized enterprises. His role was multi-faceted and included the following:
 
