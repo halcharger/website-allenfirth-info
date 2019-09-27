@@ -22,7 +22,7 @@ sections:
 
 
       I've worked for small startups and I've worked for global multi-national
-      corporations. Like I said I like building things.
+      corporations. As I said I like building things.
     section_id: about
     title: About
     type: contentblock
