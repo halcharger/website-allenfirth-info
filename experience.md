@@ -10,7 +10,7 @@ layout: page
 
 **Durban, South Africa**
 
-CodeStream does most of it's work
+Please see the [CodeStream](https://www.codestream.co.za) website.
 
 ### 2015 - 2017: CTO @ SMEasy
 
