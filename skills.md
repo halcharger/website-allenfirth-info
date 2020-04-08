@@ -11,8 +11,8 @@ I'm a full-stack developer with expert experience in databases, server-side comp
 
 At a high level, these are the tools of my trade.
 
-* C# / .NET Core
-* Javascript / Angular
 * Microsoft Azure & Azure DevOps
+* C# / .NET Core
+* Javascript / Angular / NodeJS
 * Sql Server / MongoDb
 * Git / GitHub / BitBucket
