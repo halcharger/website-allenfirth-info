@@ -1,27 +1,42 @@
-# AllenfirthInfo
+# Spotlight
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To get started with this template, first install the npm dependencies:
 
-## Code scaffolding
+```bash
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Next, create a `.env.local` file in the root of your project and set the `NEXT_PUBLIC_SITE_URL` variable to your site's public URL:
 
-## Build
+```
+NEXT_PUBLIC_SITE_URL=https://example.com
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Next, run the development server:
 
-## Running unit tests
+```bash
+npm run dev
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
-## Running end-to-end tests
+## Customizing
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
 
-## Further help
+## License
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+
+## Learn more
+
+To learn more about the technologies used in this site template, see the following resources:
+
+- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
+- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
+- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
+- [MDX](https://mdxjs.com) - the MDX documentation
