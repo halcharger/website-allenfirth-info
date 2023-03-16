@@ -47,7 +47,7 @@ export default function Home({ articles }) {
             Full-stack software developer and architect with a passion for building things.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&apos;m Allen Firth. I&apos;ve been developing applications for over two decades now. 
+            I&apos;m Allen Firth. I&apos;ve been developing applications for over <span class="font-semibold">two decades</span> now. 
           </p>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I build with <strong>C#, Angular / React & Microsoft Azure</strong>.
