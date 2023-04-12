@@ -94,7 +94,7 @@ export default function Experience() {
           </ExperienceSection>
           <ExperienceSection title="2015 - 2017">
             <Contract
-              title="SMEasy - Chief Technical Office"
+              title="SMEasy - Chief Technical Officer"
               event="Durban, South Africa">
                 <p>I worked as CTO of SMEasy, coordinating and managing all technical aspects of this exciting online accounting package startup for small to medium sized enterprises. My role was multi-faceted and included the following:</p>
                 <ul class="mt-2 list-disc">
@@ -156,6 +156,7 @@ export default function Experience() {
           </ExperienceSection>
 
         </div>
+        <p className="mt-10 text-sm text-zinc-600 dark:text-zinc-400">Older experience available on request.</p>
       </SimpleLayout>
     </>
   )
