@@ -23,6 +23,7 @@ export default function Skills() {
                     <li>Angular / React / TypeScript / Javascript / NodeJS</li>
                     <li>Azure Sql Server / Azure Synapse / Azure CosmosDb / MongoDb</li>
                     <li>Git / GitHub / BitBucket</li>
+                    <li>Microservices / Docker / Kubernetes</li>
                 </ul>
             </div>
           </div>
