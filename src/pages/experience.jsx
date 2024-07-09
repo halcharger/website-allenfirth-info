@@ -62,7 +62,7 @@ export default function Experience() {
                 requirements inside of <strong>LSEG&apos;s</strong> technical
                 estate. The team and I have successfully delivered multiple
                 production releases of the product to-date enabling{' '}
-                <strong>LSEG</strong> to to start migrating their customers from
+                <strong>LSEG</strong> to start migrating their customers from
                 the legacy product onto the new TM3 application.
               </p>
               <p class="mt-2 font-semibold">
