@@ -68,6 +68,15 @@ export default function Experience() {
               <p class="mt-2 font-semibold">
                 Web Components, TypeScript, WebSockets, Nodejs, GraphQL
               </p>
+              <p className="mt-2">
+                <a
+                  href="https://www.digiterre.com/our-work/raising-the-quality-bar-on-data-service-provision-tools-for-fixed-income-clients/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Digiterre case study on LSEG TM3 project
+                </a>
+              </p>
             </Contract>
           </ExperienceSection>
           <ExperienceSection title="Jul 2022 - May 2023 | Digiterre Consultant Developer">
