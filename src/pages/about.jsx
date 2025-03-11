@@ -4,10 +4,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import {
-  GitHubIcon,
-  LinkedInIcon,
-} from '@/components/SocialIcons'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
@@ -48,18 +45,34 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            I’m Allen Firth.
+              I’m Allen Firth.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-              <p>I am an experienced full-stack software developer and architect. I studied correspondence through the University of South Africa
-              whilst at the same time working at a small software development consultancy based in Durban. In <strong>2004</strong> I obtained my <strong>Bachelors Degree in Informatics</strong>.</p>
-              <p>I spent six and a half years expanding my technical horizons in <strong>London</strong>, working for some of the <strong>United Kingdoms</strong> premier corporations in <span class="underline-text">Law, Insurance and Finance</span>.</p>
+              <p>
+                With over two decades of experience in the tech industry, I have
+                spearheaded development teams and engineered software solutions
+                for both sprawling corporations and nimble startups. My
+                speciality is in architecting and constructing intricate
+                distributed systems, adhering to the highest industry standards.
+              </p>
 
-              <p>Today I have <strong>two decades</strong> worth of <em>in the trenches</em> software development experience with a broad exposure to different industries and software development methodologies.</p>
+              <p>
+                I spent six and a half years expanding my technical horizons in{' '}
+                <strong>London</strong>, working for some of the{' '}
+                <strong>United Kingdoms</strong> premier corporations in{' '}
+                <span class="underline-text">Law, Insurance and Finance</span>.
+              </p>
 
-              <p>I now run my own software development consultancy <a href="https://www.codestream.co.za">CodeStream</a>.</p>
+              <p>
+                I now run my own software development consultancy{' '}
+                <a href="https://www.codestream.co.za">CodeStream</a>.
+              </p>
 
-              <p>The core principles of my software development philosophy are <strong>simplicity</strong>, <strong>testing</strong> and <strong>automation</strong>.</p>
+              <p>
+                The core principles of my software development philosophy are{' '}
+                <strong>simplicity</strong>, <strong>testing</strong> and{' '}
+                <strong>automation</strong>.
+              </p>
 
               <blockquote>
                 <p>Keep it simple, Test everything, Automate always</p>
@@ -68,14 +81,26 @@ export default function About() {
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href="https://github.com/halcharger" icon={GitHubIcon} className="mt-4">
+              <SocialLink
+                href="https://github.com/halcharger"
+                icon={GitHubIcon}
+                className="mt-4"
+              >
                 Follow on GitHub
               </SocialLink>
-              <SocialLink href="https://www.linkedin.com/in/allenfirth" icon={LinkedInIcon} className="mt-4">
+              <SocialLink
+                href="https://www.linkedin.com/in/allenfirth"
+                icon={LinkedInIcon}
+                className="mt-4"
+              >
                 Follow on LinkedIn
               </SocialLink>
-              <li className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40 text-sm font-medium text-zinc-800 dark:text-zinc-200 dark:hover:text-teal-500">Email me on allen @ codestream.co.za</li>
-              <li className="mt-2 text-sm font-medium text-zinc-800 dark:text-zinc-200 dark:hover:text-teal-500">Call me on +27 (0)60 840 7793</li>
+              <li className="mt-8 border-t border-zinc-100 pt-8 text-sm font-medium text-zinc-800 dark:border-zinc-700/40 dark:text-zinc-200 dark:hover:text-teal-500">
+                Email me on allen @ codestream.co.za
+              </li>
+              <li className="mt-2 text-sm font-medium text-zinc-800 dark:text-zinc-200 dark:hover:text-teal-500">
+                Call me on +27 (0)60 840 7793
+              </li>
             </ul>
           </div>
         </div>
