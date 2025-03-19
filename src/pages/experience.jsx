@@ -37,6 +37,44 @@ export default function Experience() {
         intro="With over 20 years of experience I have a lot to offer."
       >
         <div className="space-y-20">
+          <ExperienceSection title="Jul 2024 - Current | Digiterre Consultant Developer">
+            <Contract
+              title="corfinancial - bitarisk - private client portfolio management"
+              event="London, UK - Fully Remote"
+            >
+              <p>
+                As a <strong>Digiterre</strong> consultant I worked on a team
+                responsible for building out the new REG9 compliance module of
+                corfinancials <strong>bitarisk</strong> private client portfolio
+                management system.
+              </p>
+              <p className="mt-2">
+                I Led the enhancement of an existing Angular-based user
+                interface by developing new components and integrating them
+                seamlessly with backend services and APIs. This project demanded
+                a strong blend of front-end expertise and backend coordination,
+                resulting in a robust, fully integrated solution that elevated
+                system functionality and user experience.
+              </p>
+              <p className="mt-2">
+                I led the fully remote team in taking initiative to develop
+                effective solutions, ensuring alignment with project goals
+                despite the challenges of virtual collaboration. This role
+                underscored my ability to lead, coordinate, and deliver
+                successful outcomes in a dynamic, remote work environment.
+              </p>
+              <p className="mt-2 font-semibold">Angular, TypeScript</p>
+              <p className="mt-2">
+                <a
+                  href="https://www.corfinancialgroup.com/bita-risk-information/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  corfinancial bitarisk product information.
+                </a>
+              </p>
+            </Contract>
+          </ExperienceSection>
           <ExperienceSection title="Jun 2023 - Jul 2024 | Digiterre Consultant Developer">
             <Contract
               title="London Stock Exchange Group - Municipal Market Monitor"
@@ -65,7 +103,7 @@ export default function Experience() {
                 <strong>LSEG</strong> to start migrating their customers from
                 the legacy product onto the new TM3 application.
               </p>
-              <p class="mt-2 font-semibold">
+              <p className="mt-2 font-semibold">
                 Web Components, TypeScript, WebSockets, Nodejs, GraphQL
               </p>
               <p className="mt-2">
@@ -101,7 +139,7 @@ export default function Experience() {
                 the performance of the key functional areas of the application,
                 enhancing performance by an order of magnitude.
               </p>
-              <p class="mt-2 font-semibold">
+              <p className="mt-2 font-semibold">
                 Angular, TypeScript, SignalR, C#, Asp.NET Core, Azure CosmosDb
               </p>
             </Contract>
@@ -120,12 +158,12 @@ export default function Experience() {
                 tax regions taking into consideration many different country
                 specific tax rules.
               </p>
-              <p class="mt-2">
+              <p className="mt-2">
                 As a team, we improved the performance of the application while
                 also incorporating industry best practices to enhance the code
                 quality and design.
               </p>
-              <p class="mt-2 font-semibold">
+              <p className="mt-2 font-semibold">
                 Angular, C#, Asp.NET Core, Azure SQL Server
               </p>
             </Contract>
@@ -143,7 +181,7 @@ export default function Experience() {
                 created to facilitate filtering by date, pivoting, and delving
                 into book, strategy, and trade-level data.
               </p>
-              <p class="mt-2">
+              <p className="mt-2">
                 The complexity of the project lay in managing large working
                 datasets that contained multiple reporting dimensions, and
                 handling regularly changing data. Daily trades were broadcast to
@@ -151,7 +189,7 @@ export default function Experience() {
                 the choice to pause the feed and investigate the data as a
                 snapshot in time.
               </p>
-              <p class="mt-2 font-semibold">
+              <p className="mt-2 font-semibold">
                 Angular, TypeScript, C#, Asp.NET Core, SignalR and Azure SQL
                 Synapse
               </p>
@@ -202,44 +240,46 @@ export default function Experience() {
             >
               <p>
                 I&apos;ve built the Back-End API&apos;s for{' '}
-                <span class="font-semibold">Veridot&apos;s</span> OEM system,
-                enabling them to move from their legacy system to a new highly
-                functional system for tracking the Micro-dotting of vehicles in
-                South Africa. I also managed the migration of the solution to{' '}
-                <span class="font-semibold">Azure</span> proving{' '}
-                <span class="font-semibold">Veridot</span> with a fully managed
-                Azure hosted solution.
+                <span className="font-semibold">Veridot&apos;s</span> OEM
+                system, enabling them to move from their legacy system to a new
+                highly functional system for tracking the Micro-dotting of
+                vehicles in South Africa. I also managed the migration of the
+                solution to <span className="font-semibold">Azure</span> proving{' '}
+                <span className="font-semibold">Veridot</span> with a fully
+                managed Azure hosted solution.
               </p>
-              <p class="mt-2">
-                I&apos;ve worked <span class="font-semibold">remotely</span> on
-                a live data processing system for{' '}
-                <span class="font-semibold">Chelsea Football Club</span> in the{' '}
-                <span class="font-semibold">UK</span>, recieving, analyzing and
-                processing player GPS, acceleration and speed data being fed
-                live into an Azure processing pipeline using{' '}
-                <span class="font-semibold">
+              <p className="mt-2">
+                I&apos;ve worked <span className="font-semibold">remotely</span>{' '}
+                on a live data processing system for{' '}
+                <span className="font-semibold">Chelsea Football Club</span> in
+                the <span className="font-semibold">UK</span>, recieving,
+                analyzing and processing player GPS, acceleration and speed data
+                being fed live into an Azure processing pipeline using{' '}
+                <span className="font-semibold">
                   Azure EventHub, Azure Functions and Azure Sql Server
                 </span>
                 .
               </p>
-              <p class="mt-2">
-                I&apos;ve worked <span class="font-semibold">remotely</span> for{' '}
-                <span class="font-semibold">CashRewards</span> in{' '}
-                <span class="font-semibold">Australia</span> building their new
-                Customer Coupon Management site using{' '}
-                <span class="font-semibold">Angular</span>.
+              <p className="mt-2">
+                I&apos;ve worked <span className="font-semibold">remotely</span>{' '}
+                for <span className="font-semibold">CashRewards</span> in{' '}
+                <span className="font-semibold">Australia</span> building their
+                new Customer Coupon Management site using{' '}
+                <span className="font-semibold">Angular</span>.
               </p>
-              <p class="mt-2">
-                I&apos;ve worked <span class="font-semibold">remotely</span> for
-                a <span class="font-semibold">PROFiltr</span> in the{' '}
-                <span class="font-semibold">UK</span> bringing their online
+              <p className="mt-2">
+                I&apos;ve worked <span className="font-semibold">remotely</span>{' '}
+                for a <span className="font-semibold">PROFiltr</span> in the{' '}
+                <span className="font-semibold">UK</span> bringing their online
                 solution for small bookkeeping companies together with potential
                 clients to completion using{' '}
-                <span class="font-semibold">AngualrJS, NodeJS and MongoDB</span>
+                <span className="font-semibold">
+                  AngualrJS, NodeJS and MongoDB
+                </span>
               </p>
-              <p class="mt-2">
+              <p className="mt-2">
                 I&apos;ve provided ongoing support and further development of{' '}
-                <span class="font-semibold">SMEasy</span> (see previous
+                <span className="font-semibold">SMEasy</span> (see previous
                 poisition as CTO at SMEasy)
               </p>
             </Contract>
@@ -255,7 +295,7 @@ export default function Experience() {
                 startup for small to medium sized enterprises. My role was
                 multi-faceted and included the following:
               </p>
-              <ul class="mt-2 list-disc">
+              <ul className="mt-2 list-disc">
                 <li>
                   Providing key technical insight to the SMEasy board in order
                   to aid them in strategic decision making.
@@ -340,7 +380,7 @@ export default function Experience() {
                 publish/subscribe messaging solutions built on Oracle weblogic /
                 MSMQ and a custom in-house message bus.
               </p>
-              <p class="mt-2">
+              <p className="mt-2">
                 The team used SCRUM to run and manage month long sprints. SCRUM
                 teams were located in different offices and communication was
                 paramount to successfully completing work. Part of the teams
@@ -348,7 +388,7 @@ export default function Experience() {
                 of Agile development, increase the test coverage of the code
                 base and strongly push the ethos of TDD.
               </p>
-              <p class="mt-2">
+              <p className="mt-2">
                 I have worked on various different systems including middle
                 office fund accounting, Fee calculation, Foreign Exchange and
                 Trade planning.
@@ -369,7 +409,7 @@ export default function Experience() {
                 separate components, high availability and reduce dependencies
                 on other systems.
               </p>
-              <p class="mt-2">
+              <p className="mt-2">
                 The team worked in an agile fashion using a continuous
                 integration environment (Team City) alongside unit and
                 integration testing and automated deployment to provide timely
