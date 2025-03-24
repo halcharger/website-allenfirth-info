@@ -168,14 +168,14 @@ export default function Experience() {
               </p>
             </Contract>
           </ExperienceSection>
-          <ExperienceSection title="Jul 2021 - Nov 2021 | Digiterre Consultant Developer">
+          <ExperienceSection title="Jul 2021 - Dec 2021 | Digiterre Consultant Developer">
             <Contract
               title="Anglo American - Live Exposure Reporting Tool"
               event="London, UK - Fully Remote"
             >
               <p>
                 As a <strong>Digiterre</strong> consultant I filled the role of
-                full-stack deveoper on a team building intraday reporting
+                full-stack developer on a team building intraday reporting
                 functionality for traders at <strong>Anglo American</strong>.
                 Traders could use the tool to access exposure data and it was
                 created to facilitate filtering by date, pivoting, and delving
