@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-export function Section({ title, children }) {
+export function Section({ title, subTitle, children }) {
   let id = useId()
 
   return (
@@ -14,7 +14,10 @@ export function Section({ title, children }) {
           className="text-sm font-semibold text-zinc-800 dark:text-zinc-100"
         >
           {title}
+          <br />
+          {subTitle}
         </h2>
+
         <div className="md:col-span-3">{children}</div>
       </div>
     </section>
