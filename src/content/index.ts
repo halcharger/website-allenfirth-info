@@ -5,3 +5,10 @@ export {
   type Role,
 } from './experience'
 export { skillGroups, type SkillGroup } from './skills'
+export {
+  work,
+  getAllWork,
+  getFeaturedWork,
+  getWorkBySlug,
+  type WorkItem,
+} from './work'
