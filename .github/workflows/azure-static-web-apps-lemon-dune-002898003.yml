@@ -15,24 +15,35 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Build And Deploy
+
+      # Build on the GitHub runner (not SWA Oryx). TanStack Start prerender starts a
+      # Vite preview server and fetches pages; that fails inside the Oryx Docker
+      # environment with ECONNREFUSED 127.0.0.1:3000.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install and build static site
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LEMON_DUNE_002898003 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-          action: "upload"
-          app_build_command: "npm run build"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          api_location: "" # Api source code path - optional
-          # TanStack Start / Nitro static output (not Next.js `out` or Vite default `dist`)
-          output_location: ".output/public"
-          ###### End of Repository/Build Configurations ######
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: 'upload'
+          skip_app_build: true
+          # Pre-built static output from TanStack Start / Nitro prerender
+          app_location: '.output/public'
+          api_location: ''
+          output_location: ''
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -44,4 +55,4 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LEMON_DUNE_002898003 }}
-          action: "close"
+          action: 'close'
