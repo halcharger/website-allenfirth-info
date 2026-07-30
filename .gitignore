@@ -24,6 +24,8 @@ node_modules
 /api/
 /server/build
 /public/build
+# generated at build by scripts/generate-sitemap.mjs (source: ./staticwebapp.config.json)
+/public/staticwebapp.config.json
 
 # logs
 npm-debug.log*
