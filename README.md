@@ -1,36 +1,35 @@
-# TanStack Start - Basic Example
+# allenfirth.info
 
-This is the basic TanStack Start example, demonstrating the fundamentals of building applications with TanStack Router and TanStack Start.
+Personal site for Allen Firth — senior software engineer and consultant (CodeStream, Durban).
 
-- [TanStack Router Docs](https://tanstack.com/router)
+## Stack
 
-It's deployed automagically with Netlify!
+TanStack Start (React), TanStack Router, Vite, Tailwind CSS. Fully static prerender for Azure Static Web Apps.
 
-- [Netlify](https://netlify.com/)
-
-## Start a new project based on this example
-
-To start a new project based on this example, run:
+## Develop
 
 ```sh
-npx gitpick TanStack/router/tree/main/examples/react/start-basic start-basic
+npm install
+npm run dev
 ```
-
-## Getting Started
-
-From your terminal:
-
-```sh
-pnpm install
-pnpm dev
-```
-
-This starts your app in development mode, rebuilding assets on file changes.
 
 ## Build
 
-To build the app for production:
+```sh
+npm test
+npm run build
+```
+
+Preview the production build:
 
 ```sh
-pnpm build
+npm run preview
 ```
+
+## Content
+
+Edit typed modules in `src/content/`.
+
+## Deploy
+
+Azure Static Web Apps CI builds with `npm run build` and deploys from `.output/public`. Source of truth for SWA settings is `staticwebapp.config.json` (copied into `public/` during the sitemap step).

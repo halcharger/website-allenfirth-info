@@ -1,25 +1,24 @@
-import { Link } from '@tanstack/react-router'
+import type { ReactNode } from 'react'
+import { Container } from './Container'
+import { Button } from './Button'
 
-export function NotFound({ children }: { children?: any }) {
+export function NotFound({ children }: { children?: ReactNode }) {
   return (
-    <div className="space-y-2 p-2">
-      <div className="text-gray-600 dark:text-gray-400">
-        {children || <p>The page you are looking for does not exist.</p>}
-      </div>
-      <p className="flex items-center gap-2 flex-wrap">
-        <button
-          onClick={() => window.history.back()}
-          className="bg-emerald-500 text-white px-2 py-1 rounded-sm uppercase font-black text-sm"
-        >
-          Go back
-        </button>
-        <Link
-          to="/"
-          className="bg-cyan-600 text-white px-2 py-1 rounded-sm uppercase font-black text-sm"
-        >
-          Start Over
-        </Link>
+    <Container className="flex min-h-[50vh] flex-col items-center justify-center py-20 text-center">
+      <p className="text-sm font-medium tracking-wide text-accent uppercase">
+        404
       </p>
-    </div>
+      <h1 className="mt-3 text-3xl font-semibold tracking-tight text-text">
+        Page not found
+      </h1>
+      <div className="mt-3 max-w-md text-text-muted">
+        {children ?? (
+          <p>The page you are looking for does not exist or has been moved.</p>
+        )}
+      </div>
+      <div className="mt-8">
+        <Button href="/">Back to home</Button>
+      </div>
+    </Container>
   )
 }
