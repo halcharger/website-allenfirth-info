@@ -8,6 +8,8 @@ export type SeoProps = {
   path?: string
 }
 
+const defaultOgImage = `${site.seo.siteUrl}/og-image.svg`
+
 function resolveSeo({ title, description, path }: SeoProps = {}) {
   const fullTitle = pageTitle(title)
   const desc = description ?? site.seo.defaultDescription
@@ -15,7 +17,7 @@ function resolveSeo({ title, description, path }: SeoProps = {}) {
     ? `${site.seo.siteUrl}${path.startsWith('/') ? path : `/${path}`}`
     : site.seo.siteUrl
 
-  return { fullTitle, desc, url }
+  return { fullTitle, desc, url, image: defaultOgImage }
 }
 
 /**
@@ -23,13 +25,14 @@ function resolveSeo({ title, description, path }: SeoProps = {}) {
  * Prefer this on routes for SSR / prerender SEO.
  */
 export function buildSeoHead(props: SeoProps = {}) {
-  const { fullTitle, desc, url } = resolveSeo(props)
+  const { fullTitle, desc, url, image } = resolveSeo(props)
 
   return {
     meta: [
       ...seo({
         title: fullTitle,
         description: desc,
+        image,
       }),
       { property: 'og:url', content: url },
     ],
@@ -43,7 +46,7 @@ export function buildSeoHead(props: SeoProps = {}) {
  * optional client/component usage matching the task interface.
  */
 export function Seo(props: SeoProps) {
-  const { fullTitle, desc, url } = resolveSeo(props)
+  const { fullTitle, desc, url, image } = resolveSeo(props)
 
   return (
     <>
@@ -53,6 +56,9 @@ export function Seo(props: SeoProps) {
       <meta name="og:description" content={desc} />
       <meta name="og:type" content="website" />
       <meta name="og:url" content={url} />
+      <meta name="og:image" content={image} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={image} />
       <link rel="canonical" href={url} />
     </>
   )
