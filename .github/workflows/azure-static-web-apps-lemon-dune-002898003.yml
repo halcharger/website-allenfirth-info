@@ -29,7 +29,9 @@ jobs:
 
       - name: Install and build static site
         run: |
-          npm ci
+          # Prefer install over ci: lockfile can lag nested optional peers on Linux
+          # runners (npm ci EUSAGE: missing packages). install still respects the lock.
+          npm install --no-audit --no-fund
           npm run build
 
       - name: Deploy to Azure Static Web Apps
