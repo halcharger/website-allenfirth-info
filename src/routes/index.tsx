@@ -1,44 +1,39 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { Button } from '@/components/Button'
-import { Card } from '@/components/Card'
-import { Container } from '@/components/Container'
-import { MetaChip } from '@/components/MetaChip'
-import { Section } from '@/components/Section'
-import { buildSeoHead } from '@/components/Seo'
-import { SkillGroup } from '@/components/SkillGroup'
-import { WorkCard } from '@/components/WorkCard'
-import {
-  getFeaturedWork,
-  getRecentRoles,
-  site,
-  skillGroups,
-} from '@/content'
-import { formatDateRange } from '@/lib/dates'
-import portrait from '@/assets/portrait.jpg'
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { Button } from "@/components/Button";
+import { Card } from "@/components/Card";
+import { Container } from "@/components/Container";
+import { MetaChip } from "@/components/MetaChip";
+import { Section } from "@/components/Section";
+import { buildSeoHead } from "@/components/Seo";
+import { SkillGroup } from "@/components/SkillGroup";
+import { WorkCard } from "@/components/WorkCard";
+import { getFeaturedWork, getRecentRoles, site, skillGroups } from "@/content";
+import { formatDateRange } from "@/lib/dates";
+import portrait from "@/assets/portrait.jpg";
 
-export const Route = createFileRoute('/')({
-  head: () => buildSeoHead({ path: '/' }),
+export const Route = createFileRoute("/")({
+  head: () => buildSeoHead({ path: "/" }),
   component: Home,
-})
+});
 
 const highlights = [
-  { label: '25+ years', detail: 'Shipping production software' },
+  { label: "25+ years", detail: "Shipping production software" },
   {
-    label: 'Finance · Energy · Law · Retail',
-    detail: 'Complex domain systems',
+    label: "Finance · Energy · Law · Retail",
+    detail: "Complex domain systems",
   },
   {
-    label: 'AI-first since Jun 2025',
-    detail: 'Agents for speed · human review for risk',
+    label: "AI-first since Jun 2025",
+    detail: "Agents for speed · human review for risk",
   },
-] as const
+] as const;
 
 const heroSummary =
-  'Senior software engineer and consultant with 25+ years building systems for finance, energy, law, insurance, and retail. Since June 2025 I’ve worked AI-first — agents for scaffolding, refactoring, and tests; I keep architecture, security, and every merge under senior review. Full-stack on Angular, TypeScript, C#/.NET, and Azure. Based in Durban; previously London.'
+  "Senior software engineer and consultant with 25+ years building systems for finance, energy, law, insurance, and retail. Since June 2025 I’ve worked AI-first — agents for scaffolding, refactoring, and tests; I keep architecture, security, and every merge under senior review. Full-stack on React, Angular, TypeScript, C#/.NET, and Azure. Based in Durban; previously London.";
 
 function Home() {
-  const recentRoles = getRecentRoles(3)
-  const featuredWork = getFeaturedWork(3)
+  const recentRoles = getRecentRoles(3);
+  const featuredWork = getFeaturedWork(3);
 
   return (
     <Container>
@@ -83,7 +78,9 @@ function Home() {
           {highlights.map((item) => (
             <li key={item.label}>
               <Card className="h-full">
-                <p className="text-base font-semibold text-text">{item.label}</p>
+                <p className="text-base font-semibold text-text">
+                  {item.label}
+                </p>
                 <p className="mt-1 text-sm text-text-muted">{item.detail}</p>
               </Card>
             </li>
@@ -100,7 +97,7 @@ function Home() {
         <ul className="grid gap-4 md:grid-cols-3">
           {recentRoles.map((role) => (
             <li key={role.id}>
-              <Link to={'/experience' as never} className="group block h-full">
+              <Link to={"/experience" as never} className="group block h-full">
                 <Card className="flex h-full flex-col gap-2">
                   <p className="font-mono text-xs text-text-subtle">
                     {formatDateRange(role.start, role.end)}
@@ -200,10 +197,10 @@ function Home() {
           >
             {site.email}
           </a>
-          {' · '}
+          {" · "}
           {site.location}
         </p>
       </Section>
     </Container>
-  )
+  );
 }
