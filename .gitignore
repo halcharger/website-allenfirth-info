@@ -1,37 +1,41 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# build / start / vite
 .DS_Store
-*.pem
+.cache
+.env
+.env*.local
+.vercel
+.output
+.nitro
+.tanstack
+/build/
+/dist/
+/api/
+/server/build
+/public/build
 
-# debug
+# logs
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# Sentry
+.env.sentry-build-plugin
 
-# vercel
-.vercel
+# misc
+*.pem
+out.zip
 
-# generated files
-/public/rss/
-
+# local worktrees (parent repo convention)
 .worktrees/

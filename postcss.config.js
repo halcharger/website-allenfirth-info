@@ -1,9 +1,2 @@
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    'postcss-focus-visible': {
-      replaceWith: '[data-focus-visible-added]',
-    },
-    autoprefixer: {},
-  },
-}
+// Empty config so Vite/PostCSS does not walk up into the parent Next.js repo.
+export default {}
