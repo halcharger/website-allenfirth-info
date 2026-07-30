@@ -25,6 +25,8 @@ import { Route as PostsIndexRouteImport } from './routes/posts.index'
 import { Route as PostsPostIdRouteImport } from './routes/posts.$postId'
 import { Route as UsersIndexRouteImport } from './routes/users.index'
 import { Route as UsersUserIdRouteImport } from './routes/users.$userId'
+import { Route as WorkIndexRouteImport } from './routes/work/index'
+import { Route as WorkSlugRouteImport } from './routes/work/$slug'
 import { Route as PathlessLayoutNestedLayoutRouteARouteImport } from './routes/_pathlessLayout/_nested-layout/route-a'
 import { Route as PathlessLayoutNestedLayoutRouteBRouteImport } from './routes/_pathlessLayout/_nested-layout/route-b'
 import { Route as ApiUsersUserIdRouteImport } from './routes/api/users.$userId'
@@ -109,6 +111,16 @@ const UsersUserIdRoute = UsersUserIdRouteImport.update({
   path: '/$userId',
   getParentRoute: () => UsersRoute,
 } as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/work/',
+  path: '/work/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/work/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PathlessLayoutNestedLayoutRouteARoute =
   PathlessLayoutNestedLayoutRouteARouteImport.update({
     id: '/route-a',
@@ -145,8 +157,10 @@ export interface FileRoutesByFullPath {
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
+  '/work/': typeof WorkIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
   '/route-b': typeof PathlessLayoutNestedLayoutRouteBRoute
   '/api/users/$userId': typeof ApiUsersUserIdRoute
@@ -163,8 +177,10 @@ export interface FileRoutesByTo {
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/posts': typeof PostsIndexRoute
   '/users': typeof UsersIndexRoute
+  '/work': typeof WorkIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
   '/route-b': typeof PathlessLayoutNestedLayoutRouteBRoute
   '/api/users/$userId': typeof ApiUsersUserIdRoute
@@ -186,8 +202,10 @@ export interface FileRoutesById {
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
+  '/work/': typeof WorkIndexRoute
   '/_pathlessLayout/_nested-layout/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
   '/_pathlessLayout/_nested-layout/route-b': typeof PathlessLayoutNestedLayoutRouteBRoute
   '/api/users/$userId': typeof ApiUsersUserIdRoute
@@ -208,8 +226,10 @@ export interface FileRouteTypes {
     | '/api/users'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/work/$slug'
     | '/posts/'
     | '/users/'
+    | '/work/'
     | '/route-a'
     | '/route-b'
     | '/api/users/$userId'
@@ -226,8 +246,10 @@ export interface FileRouteTypes {
     | '/api/users'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/work/$slug'
     | '/posts'
     | '/users'
+    | '/work'
     | '/route-a'
     | '/route-b'
     | '/api/users/$userId'
@@ -248,8 +270,10 @@ export interface FileRouteTypes {
     | '/api/users'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/work/$slug'
     | '/posts/'
     | '/users/'
+    | '/work/'
     | '/_pathlessLayout/_nested-layout/route-a'
     | '/_pathlessLayout/_nested-layout/route-b'
     | '/api/users/$userId'
@@ -268,6 +292,8 @@ export interface RootRouteChildren {
   SkillsRoute: typeof SkillsRoute
   UsersRoute: typeof UsersRouteWithChildren
   ApiUsersRoute: typeof ApiUsersRouteWithChildren
+  WorkSlugRoute: typeof WorkSlugRoute
+  WorkIndexRoute: typeof WorkIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
 
@@ -385,6 +411,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersUserIdRouteImport
       parentRoute: typeof UsersRoute
     }
+    '/work/': {
+      id: '/work/'
+      path: '/work'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/work/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_pathlessLayout/_nested-layout/route-a': {
       id: '/_pathlessLayout/_nested-layout/route-a'
       path: '/route-a'
@@ -494,6 +534,8 @@ const rootRouteChildren: RootRouteChildren = {
   SkillsRoute: SkillsRoute,
   UsersRoute: UsersRouteWithChildren,
   ApiUsersRoute: ApiUsersRouteWithChildren,
+  WorkSlugRoute: WorkSlugRoute,
+  WorkIndexRoute: WorkIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
 export const routeTree = rootRouteImport

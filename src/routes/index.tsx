@@ -5,12 +5,12 @@ import { Container } from '@/components/Container'
 import { MetaChip } from '@/components/MetaChip'
 import { Section } from '@/components/Section'
 import { buildSeoHead } from '@/components/Seo'
+import { WorkCard } from '@/components/WorkCard'
 import {
   getFeaturedWork,
   getRecentRoles,
   site,
   skillGroups,
-  type WorkItem,
 } from '@/content'
 import { formatDateRange } from '@/lib/dates'
 
@@ -30,38 +30,6 @@ const highlights = [
 
 const heroSummary =
   'Senior software engineer and consultant with 25+ years building systems for finance, energy, law, insurance and retail. I lead full-stack delivery on trading, markets, and enterprise platforms—Angular, TypeScript, C#/.NET, and Azure. Based in Durban; previously London.'
-
-function WorkCard({ item }: { item: WorkItem }) {
-  return (
-    <Link
-      to={`/work/${item.slug}` as never}
-      className="group block h-full"
-    >
-      <Card className="flex h-full flex-col gap-3">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <p className="font-mono text-xs text-text-subtle">{item.year}</p>
-          {item.clientType ? (
-            <MetaChip>{item.clientType}</MetaChip>
-          ) : null}
-        </div>
-        <div>
-          <h3 className="text-base font-semibold text-text transition-colors group-hover:text-accent">
-            {item.title}
-          </h3>
-          <p className="mt-1 text-sm text-text-muted">{item.client}</p>
-        </div>
-        <p className="line-clamp-3 text-sm leading-relaxed text-text-muted">
-          {item.outcome}
-        </p>
-        <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
-          {item.stack.slice(0, 4).map((tech) => (
-            <MetaChip key={tech}>{tech}</MetaChip>
-          ))}
-        </div>
-      </Card>
-    </Link>
-  )
-}
 
 function Home() {
   const recentRoles = getRecentRoles(3)
