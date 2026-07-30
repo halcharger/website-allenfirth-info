@@ -1,42 +1,35 @@
-# Spotlight
+# allenfirth.info
 
-Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Personal site for Allen Firth — senior software engineer and consultant (CodeStream, Durban).
 
-## Getting started
+## Stack
 
-To get started with this template, first install the npm dependencies:
+TanStack Start (React), TanStack Router, Vite, Tailwind CSS. Fully static prerender for Azure Static Web Apps.
 
-```bash
+## Develop
+
+```sh
 npm install
-```
-
-Next, create a `.env.local` file in the root of your project and set the `NEXT_PUBLIC_SITE_URL` variable to your site's public URL:
-
-```
-NEXT_PUBLIC_SITE_URL=https://example.com
-```
-
-Next, run the development server:
-
-```bash
 npm run dev
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+## Build
 
-## Customizing
+```sh
+npm test
+npm run build
+```
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+Preview the production build:
 
-## License
+```sh
+npm run preview
+```
 
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+## Content
 
-## Learn more
+Edit typed modules in `src/content/`.
 
-To learn more about the technologies used in this site template, see the following resources:
+## Deploy
 
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [MDX](https://mdxjs.com) - the MDX documentation
+Azure Static Web Apps CI builds with `npm run build` and deploys from `.output/public`. Source of truth for SWA settings is `staticwebapp.config.json` (copied into `public/` during the sitemap step).

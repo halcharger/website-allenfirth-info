@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Allen Firth">
+  <rect width="32" height="32" rx="6" fill="#18181b"/>
+  <rect x="0" y="0" width="4" height="32" rx="0" fill="#4f46e5"/>
+  <text x="10" y="23" fill="#fafafa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="700">A</text>
+</svg>
