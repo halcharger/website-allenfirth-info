@@ -11,13 +11,13 @@ export const Route = createFileRoute('/skills')({
       title: 'Skills',
       path: '/skills',
       description:
-        'Cloud, backend, frontend, data, and practice skills — full-stack capabilities across Azure, .NET, TypeScript, and delivery.',
+        'AI-native delivery since June 2025, plus cloud, backend, frontend, data, and practice skills across Azure, .NET, TypeScript, and delivery.',
     }),
   component: SkillsPage,
 })
 
 const intro =
-  'Full-stack engineer with deep experience across cloud platforms, server-side systems, client interfaces, and data stores—grouped by layer below.'
+  'Full-stack engineer with deep experience across cloud, backend, frontend, and data — plus AI-native delivery since June 2025: agents for the keystrokes, senior engineering for the decisions.'
 
 function SkillsPage() {
   return (

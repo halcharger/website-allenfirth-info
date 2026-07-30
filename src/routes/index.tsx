@@ -27,11 +27,14 @@ const highlights = [
     label: 'Finance · Energy · Law · Retail',
     detail: 'Complex domain systems',
   },
-  { label: 'Durban · formerly London', detail: site.location },
+  {
+    label: 'AI-first since Jun 2025',
+    detail: 'Agents for speed · human review for risk',
+  },
 ] as const
 
 const heroSummary =
-  'Senior software engineer and consultant with 25+ years building systems for finance, energy, law, insurance and retail. I lead full-stack delivery on trading, markets, and enterprise platforms—Angular, TypeScript, C#/.NET, and Azure. Based in Durban; previously London.'
+  'Senior software engineer and consultant with 25+ years building systems for finance, energy, law, insurance, and retail. Since June 2025 I’ve worked AI-first — agents for scaffolding, refactoring, and tests; I keep architecture, security, and every merge under senior review. Full-stack on Angular, TypeScript, C#/.NET, and Azure. Based in Durban; previously London.'
 
 function Home() {
   const recentRoles = getRecentRoles(3)
@@ -178,7 +181,7 @@ function Home() {
         id="contact"
         eyebrow="Next step"
         title="Get in touch"
-        description="Open to senior engineering and consulting conversations."
+        description="Open to senior roles and consulting where AI-accelerated delivery needs a senior engineer in the loop."
         className="pb-20"
       >
         <div className="flex flex-wrap gap-3">

@@ -2,6 +2,16 @@ export type SkillGroup = { layer: string; items: string[] }
 
 export const skillGroups: SkillGroup[] = [
   {
+    layer: 'AI & tooling',
+    items: [
+      'AI coding agents',
+      'Agentic workflows',
+      'Prompt design for code',
+      'Human-in-the-loop review',
+      'AI-assisted TDD & refactoring',
+    ],
+  },
+  {
     layer: 'Cloud',
     items: [
       'Microsoft Azure',
@@ -31,6 +41,7 @@ export const skillGroups: SkillGroup[] = [
       'Microservices',
       'Docker / Kubernetes',
       'Code review',
+      'AI-augmented delivery',
     ],
   },
 ]

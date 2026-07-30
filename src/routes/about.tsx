@@ -82,13 +82,25 @@ function AboutPage() {
                 , my software development consultancy, based in {site.location}.
               </p>
               <p>
+                Since <strong className="font-medium text-text">June 2025</strong>{' '}
+                I’ve used AI coding agents as a default part of how I build:
+                planning and prompts I control, generation I treat as a draft,
+                and nothing merges without my review. The goal isn’t “AI wrote
+                it” — it’s{' '}
+                <strong className="font-medium text-text">
+                  higher throughput with the same bar
+                </strong>{' '}
+                on design, tests, and production safety.
+              </p>
+              <p>
                 The core of how I work is{' '}
                 <strong className="font-medium text-text">simplicity</strong>,{' '}
                 <strong className="font-medium text-text">testing</strong>, and{' '}
-                <strong className="font-medium text-text">automation</strong>.
+                <strong className="font-medium text-text">automation</strong> —
+                now applied to how AI is used, not only to the code it produces.
               </p>
               <blockquote className="border-l-2 border-accent pl-4 text-text-muted italic">
-                Keep it simple. Test everything. Automate always.
+                Agents draft. I decide. Production stays human-owned.
               </blockquote>
             </div>
           </div>

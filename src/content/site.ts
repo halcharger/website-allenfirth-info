@@ -1,6 +1,6 @@
 export const site = {
   name: 'Allen Firth',
-  title: 'Senior software engineer and consultant',
+  title: 'Senior software engineer — AI-augmented delivery',
   email: 'allen@codestream.co.za',
   phone: '+27 (0)60 840 7793',
   location: 'Durban, South Africa',
@@ -12,7 +12,7 @@ export const site = {
   },
   seo: {
     defaultDescription:
-      'Allen Firth — senior software engineer and consultant with 25+ years building systems for finance, energy, law, insurance and retail.',
+      'Allen Firth — senior software engineer with 25+ years on finance, energy, law, and retail systems. Since June 2025, delivering with AI coding agents under senior review — faster iteration, same production bar.',
     siteUrl: 'https://allenfirth.info',
   },
 } as const
