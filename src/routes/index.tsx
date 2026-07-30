@@ -5,6 +5,7 @@ import { Container } from '@/components/Container'
 import { MetaChip } from '@/components/MetaChip'
 import { Section } from '@/components/Section'
 import { buildSeoHead } from '@/components/Seo'
+import { SkillGroup } from '@/components/SkillGroup'
 import { WorkCard } from '@/components/WorkCard'
 import {
   getFeaturedWork,
@@ -13,6 +14,7 @@ import {
   skillGroups,
 } from '@/content'
 import { formatDateRange } from '@/lib/dates'
+import portrait from '@/assets/portrait.jpg'
 
 export const Route = createFileRoute('/')({
   head: () => buildSeoHead({ path: '/' }),
@@ -39,21 +41,36 @@ function Home() {
     <Container>
       {/* Hero */}
       <Section className="pt-16 sm:pt-20">
-        <p className="mb-3 font-mono text-xs uppercase tracking-wider text-text-subtle">
-          Professional site
-        </p>
-        <h1 className="text-3xl font-semibold tracking-tight text-text sm:text-4xl">
-          {site.name}
-        </h1>
-        <p className="mt-2 text-lg text-text-muted sm:text-xl">{site.title}</p>
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-muted">
-          {heroSummary}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button href={site.links.cv}>Download CV</Button>
-          <Button href="/experience" variant="secondary">
-            View experience
-          </Button>
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-7">
+            <p className="mb-3 font-mono text-xs uppercase tracking-wider text-text-subtle">
+              Professional site
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight text-text sm:text-4xl">
+              {site.name}
+            </h1>
+            <p className="mt-2 text-lg text-text-muted sm:text-xl">
+              {site.title}
+            </p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-muted">
+              {heroSummary}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href={site.links.cv}>Download CV</Button>
+              <Button href="/experience" variant="secondary">
+                View experience
+              </Button>
+            </div>
+          </div>
+          <div className="flex justify-center lg:col-span-5 lg:justify-end">
+            <img
+              src={portrait}
+              alt={`Portrait of ${site.name}`}
+              width={256}
+              height={256}
+              className="h-56 w-56 rounded-full border border-border bg-surface object-cover shadow-sm sm:h-64 sm:w-64"
+            />
+          </div>
         </div>
       </Section>
 
@@ -137,20 +154,18 @@ function Home() {
         title="Skills snapshot"
         description="Layers I work across day to day."
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <div key={group.layer}>
-              <h3 className="mb-2 text-sm font-semibold text-text">
-                {group.layer}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {group.items.slice(0, 4).map((item) => (
-                  <MetaChip key={item}>{item}</MetaChip>
-                ))}
-              </div>
-            </div>
+            <li key={group.layer}>
+              <SkillGroup
+                group={{
+                  ...group,
+                  items: group.items.slice(0, 4),
+                }}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
         <div className="mt-6">
           <Button href="/skills" variant="secondary">
             Full skills

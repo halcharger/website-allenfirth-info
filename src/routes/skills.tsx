@@ -31,11 +31,13 @@ function SkillsPage() {
             {intro}
           </p>
         </header>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <SkillGroup key={group.layer} group={group} />
+            <li key={group.layer}>
+              <SkillGroup group={group} />
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
     </Container>
   )

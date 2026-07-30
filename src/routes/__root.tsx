@@ -68,7 +68,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-bg text-text antialiased">
+      <body className="bg-bg text-text antialiased" suppressHydrationWarning>
         <ScriptOnce children={themeInitScript} />
         <Header />
         <main className="min-h-[70vh]">{children}</main>
