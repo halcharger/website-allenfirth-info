@@ -26,6 +26,12 @@ node_modules
 /public/build
 # generated at build by scripts/generate-sitemap.mjs (source: ./staticwebapp.config.json)
 /public/staticwebapp.config.json
+# generated at build by scripts/generate-sitemap.mjs
+/public/sitemap.xml
+
+# legacy Next.js build output (pre-TanStack; may linger locally)
+.next/
+/out/
 
 # logs
 npm-debug.log*
@@ -39,5 +45,7 @@ yarn-debug.log*
 *.pem
 out.zip
 
-# local worktrees (parent repo convention)
+# local tooling / agents
 .worktrees/
+.superpowers/
+.claude/
