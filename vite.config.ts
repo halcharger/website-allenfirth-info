@@ -4,6 +4,7 @@ import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
 import { getAllWork } from './src/content/work'
+import { shouldPrerenderPath } from './src/lib/prerender'
 
 const workPages = getAllWork().map((w) => ({
   path: `/work/${w.slug}`,
@@ -35,6 +36,7 @@ export default defineConfig({
         autoStaticPathsDiscovery: true,
         crawlLinks: true,
         failOnError: true,
+        filter: (page) => shouldPrerenderPath(page.path),
       },
     }),
     viteReact(),
