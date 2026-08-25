@@ -31,7 +31,13 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     layer: 'Data',
-    items: ['Azure SQL', 'Azure Synapse', 'Azure Cosmos DB', 'MongoDB'],
+    items: [
+      'Azure SQL',
+      'PostgreSQL',
+      'Azure Synapse',
+      'Azure Cosmos DB',
+      'MongoDB',
+    ],
   },
   {
     layer: 'Practice',

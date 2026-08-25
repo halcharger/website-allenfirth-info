@@ -22,4 +22,10 @@ describe('skills content', () => {
     const layers = skillGroups.map((g) => g.layer)
     expect(layers).toEqual(expect.arrayContaining(['Cloud', 'Backend']))
   })
+
+  it('includes PostgreSQL on the Data card, including the home snapshot first four', () => {
+    const data = skillGroups.find((g) => g.layer === 'Data')
+    expect(data?.items).toContain('PostgreSQL')
+    expect(data?.items.slice(0, 4)).toContain('PostgreSQL')
+  })
 })
