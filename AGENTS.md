@@ -118,9 +118,11 @@ Dashboard settings:
 
 | Setting | Value |
 |--------|--------|
-| Build command | `npm test && npm run typecheck && npm run build` |
+| Build command | `npm install --no-audit --no-fund && npm test && npm run typecheck && npm run build` |
 | Output directory | `.output/public` |
 | Production branch | `master` |
+
+Set environment variable **`SKIP_DEPENDENCY_INSTALL=true`** (Production and Preview). Pages otherwise runs `npm ci` first; this lockfile can lag nested optional peers on Linux (`Missing: lru-cache@… from lock file`), the same reason Azure used `npm install`.
 
 Root `functions/` is published with that build (including PR previews). **Do not** set `pages_build_output_dir` in `wrangler.toml` — that makes Pages skip the dashboard build command.
 

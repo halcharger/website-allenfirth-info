@@ -179,9 +179,11 @@ Connect the GitHub repo in the Cloudflare dashboard:
 
 | Setting | Value |
 |---------|--------|
-| Build command | `npm test && npm run typecheck && npm run build` |
+| Build command | `npm install --no-audit --no-fund && npm test && npm run typecheck && npm run build` |
 | Output directory | `.output/public` |
 | Production branch | `master` |
+
+Also set **`SKIP_DEPENDENCY_INSTALL`** = `true` (Production and Preview). Cloudflare otherwise runs `npm ci` before the build command; this repo’s lockfile can fail that check on Linux (`Missing: lru-cache@… from lock file`). `npm install` still respects the lockfile, which is what Azure CI used.
 
 Do **not** add `pages_build_output_dir` to `wrangler.toml`.
 
