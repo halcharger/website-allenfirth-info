@@ -40,6 +40,9 @@ export default defineConfig({
       },
     }),
     viteReact(),
-    nitro(),
+    // Pin node-server so CI on Cloudflare Pages does not auto-select the
+    // cloudflare-pages preset (that writes dist/_worker.js and prerenders via
+    // `wrangler pages dev --host`, which Wrangler 4 rejects).
+    nitro({ preset: 'node-server' }),
   ],
 })

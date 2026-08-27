@@ -138,6 +138,8 @@ If `RESEND_API_KEY` is missing the Function returns HTTP 500 with `Contact form 
 
 Headers: `public/_headers` (copied into `.output/public` by the build).
 
+Nitro must stay on the **`node-server` preset** (`vite.config.ts`). Cloudflare’s build env otherwise auto-selects `cloudflare-pages`, which writes `dist/_worker.js` and prerenders with `wrangler pages dev` (incompatible with our static `functions/` + `.output/public` setup).
+
 If a Pages Git build fails because prerender cannot bind `127.0.0.1:4173`, fall back to a GitHub Action that builds on the runner and `wrangler pages deploy .output/public`. Do not switch to TanStack Start on Workers SSR unless explicitly requested.
 
 ---
