@@ -2,7 +2,7 @@
 
 Personal site for **[Allen Firth](https://allenfirth.info)** — senior software engineer and consultant (CodeStream, Durban).
 
-The site is a **static**, recruiter-facing professional presence: home, about, experience timeline, selected work case studies, skills, and contact. Content is typed TypeScript modules, not a CMS.
+The site is a **static**, recruiter-facing professional presence: home, about, experience timeline, selected work case studies, skills, and contact. Content is typed TypeScript modules, not a CMS. It is hosted on **Cloudflare Pages**. Direct messages go through a **Pages Function** and **Resend** (account **`allen@codestream.co.za`**), not a public email or phone listing.
 
 ---
 
@@ -145,7 +145,17 @@ npm run preview
 
 ## Contact form
 
-Fields: **name**, **email**, **message**. The form posts to `/api/contact` (`functions/api/contact.ts`), which emails `CONTACT_TO` via Resend (`reply_to` is the visitor’s address). The public site does not show a personal email or phone.
+Fields: **name**, **email**, **message**. The form posts to `/api/contact`.
+
+Implementation:
+
+1. `src/components/ContactForm.tsx` — browser `POST /api/contact`
+2. `functions/api/contact.ts` — Cloudflare **Pages Function** adapter
+3. `src/lib/contact-handler.ts` — validation, honeypot, Resend HTTP call
+
+**Resend:** use the account for **`allen@codestream.co.za`** (verified domain **`codestream.co.za`**). `RESEND_API_KEY` is a runtime secret on the Pages project. `from` must be on that domain (default `Allen Firth <noreply@codestream.co.za>`). The public site does not show a personal email or phone; `reply_to` on the message is the visitor’s address.
+
+A 500 `Contact form is not configured` means the key is missing at **Function runtime**. A 502 `Failed to send message` means Resend rejected the send (wrong account, unverified from-domain, or similar).
 
 ### Local API
 
@@ -163,7 +173,7 @@ The Function reads `RESEND_API_KEY` at **runtime**. Set secrets in the Pages pro
 
 | Name | Required | Notes |
 |------|----------|--------|
-| `RESEND_API_KEY` | Yes | Resend API key — type **Secret** |
+| `RESEND_API_KEY` | Yes | Secret from the Resend account for **`allen@codestream.co.za`** |
 | `CONTACT_TO` | No | Defaults to `allen@codestream.co.za` |
 | `CONTACT_FROM` | No | Defaults to `Allen Firth <noreply@codestream.co.za>` — domain must be verified in Resend |
 
@@ -173,9 +183,11 @@ Enable the secret for **Preview** and **Production**. Existing deploys do not pi
 
 ## Deploy (Cloudflare Pages)
 
-Production deploys from **`master`**. Pull requests get `*.pages.dev` previews.
+**Host:** Cloudflare Pages project **`website-allenfirth-info`**. Not Azure Static Web Apps.
 
-Connect the GitHub repo in the Cloudflare dashboard:
+Production deploys from **`master`**. Pull requests get `*.pages.dev` previews (each hash URL is a snapshot; prefer the latest preview or production after env changes).
+
+GitHub repo is connected in the Cloudflare dashboard:
 
 | Setting | Value |
 |---------|--------|
@@ -187,9 +199,7 @@ Also set **`SKIP_DEPENDENCY_INSTALL`** = `true` (Production and Preview). Cloudf
 
 Do **not** add `pages_build_output_dir` to `wrangler.toml`.
 
-After the first successful Pages deploy, attach the custom domain `allenfirth.info` (DNS is already on Cloudflare). Then retire the old Azure Static Web Apps resource so it is no longer the origin.
-
-Confirm in the deploy log that Functions were uploaded (`Found Functions directory at /functions`).
+Custom domain: **`allenfirth.info`**. Confirm in the deploy log that Functions were uploaded (`Found Functions directory at /functions`).
 
 ---
 

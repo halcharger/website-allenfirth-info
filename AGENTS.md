@@ -13,6 +13,8 @@ Personal professional site for **Allen Firth** (CodeStream, Durban): recruiter-f
 - Primary audience: recruiters and hiring managers  
 - Positioning: senior software engineer with **AI-augmented delivery since June 2025**  
 - Live site: https://allenfirth.info  
+- **Host:** Cloudflare Pages (Git integration). Not Azure Static Web Apps.  
+- **Direct contact:** public form only — no personal email or phone on the site. Mail is sent with **Resend** from a **Cloudflare Pages Function**.  
 
 Design / plan docs (if present): `docs/superpowers/specs/`, `docs/superpowers/plans/`.
 
@@ -100,6 +102,33 @@ Keep the site scannable for a 10-second recruiter pass.
 
 ---
 
+## Contact form, Pages Functions, and Resend
+
+The only public way to message Allen is the form on `/contact` (`src/components/ContactForm.tsx`). It `POST`s JSON `{ name, email, message, company? }` to **`/api/contact`**.
+
+```
+browser  →  Cloudflare Pages Function  functions/api/contact.ts
+         →  src/lib/contact-handler.ts  (validate, honeypot, HTML-escape)
+         →  https://api.resend.com/emails
+         →  CONTACT_TO  (reply_to = visitor)
+```
+
+**Resend account:** the API key **must** come from the Resend account registered to **`allen@codestream.co.za`**. That account has **`codestream.co.za` verified**. Do not switch to a different Resend account or from-domain unless Allen asks. Sending from an unverified domain returns HTTP **502** `Failed to send message`.
+
+| Runtime var | Role |
+|-------------|------|
+| `RESEND_API_KEY` | Secret from that Resend account. Missing key → **500** `Contact form is not configured`. |
+| `CONTACT_FROM` | Must be on the verified domain, e.g. `Allen Firth <noreply@codestream.co.za>` (code default; dashboard may override). |
+| `CONTACT_TO` | Inbox. Code default `allen@codestream.co.za`; dashboard may override. |
+
+`wrangler.toml` `[vars]` apply to **local** `wrangler pages dev` only. Git Pages builds skip that file (no `pages_build_output_dir`), so **dashboard runtime** vars are what production and `*.pages.dev` previews use. Unique preview hostnames (`https://<hash>.….pages.dev`) are frozen to that deploy’s bindings — after changing secrets, test the **latest** preview or production, not an old hash.
+
+Honeypot field `company`: non-empty → fake **200** (no Resend call). Function errors log `Resend rejected contact email` (status, from, to, body) — `npx wrangler pages deployment tail`.
+
+Do not add a mailto/tel on public pages. Do not move the API to Azure Functions or TanStack Start server routes unless explicitly requested.
+
+---
+
 ## Git & PRs
 
 - Default branch: **`master`**.  
@@ -112,7 +141,7 @@ Keep the site scannable for a 10-second recruiter pass.
 
 ## Deploy (Cloudflare Pages)
 
-Primary host is **Cloudflare Pages** (Git integration on `master`).
+**This site is hosted on Cloudflare Pages**, project **`website-allenfirth-info`**, GitHub repo `halcharger/website-allenfirth-info`. Production branch **`master`**. Custom domain **`allenfirth.info`** (DNS already on Cloudflare). Azure Static Web Apps is **not** used; do not restore the old SWA workflow.
 
 Dashboard settings:
 

@@ -2,9 +2,12 @@
 #   npm run build
 #   npx wrangler pages dev .output/public
 #
-# Do NOT set `pages_build_output_dir` here. When that key is present, Cloudflare
-# Pages Git builds treat this file as the source of truth for build config and
-# skip the dashboard build command.
+# Git Cloudflare Pages deploys skip this file unless `pages_build_output_dir` is
+# set. Do NOT set that key — it makes Pages skip the dashboard build command.
+#
+# Resend: API key from the account for allen@codestream.co.za
+# (verified domain codestream.co.za). Production/preview secrets live in the
+# Pages dashboard, not here.
 
 name = "allenfirth-info"
 compatibility_date = "2026-08-26"

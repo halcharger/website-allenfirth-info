@@ -1,4 +1,6 @@
 # Copy to `.dev.vars` for local `wrangler pages dev` (never commit `.dev.vars`).
+# Use the Resend API key from the account registered to allen@codestream.co.za
+# (verified sending domain: codestream.co.za).
 RESEND_API_KEY=re_xxxxxxxx
 # Optional overrides:
 # CONTACT_TO=allen@codestream.co.za
