@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@/components/Button'
+import { ContactForm } from '@/components/ContactForm'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { buildSeoHead, Seo } from '@/components/Seo'
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/contact')({
       title: 'Contact',
       path: '/contact',
       description:
-        'Get in touch with Allen Firth — email, phone, LinkedIn, GitHub, or download the CV.',
+        'Get in touch with Allen Firth — send a message, or use email, phone, LinkedIn, GitHub, or download the CV.',
     }),
   component: ContactPage,
 })
@@ -57,28 +58,34 @@ function ContactPage() {
           </p>
         </header>
 
-        <div className="mb-8">
-          <Button href={site.links.cv}>Download CV</Button>
-        </div>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:items-start">
+          <ContactForm />
 
-        <ul className="grid max-w-xl gap-4 sm:grid-cols-2">
-          {contactLinks.map((item) => (
-            <li key={item.label}>
-              <p className="font-mono text-xs uppercase tracking-wider text-text-subtle">
-                {item.label}
-              </p>
-              <a
-                href={item.href}
-                className="mt-1 inline-block text-base text-text transition-colors hover:text-accent"
-                {...(/^https?:\/\//.test(item.href)
-                  ? { target: '_blank', rel: 'noreferrer' }
-                  : {})}
-              >
-                {item.value}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <div>
+            <div className="mb-8">
+              <Button href={site.links.cv}>Download CV</Button>
+            </div>
+
+            <ul className="grid max-w-xl gap-4 sm:grid-cols-2">
+              {contactLinks.map((item) => (
+                <li key={item.label}>
+                  <p className="font-mono text-xs uppercase tracking-wider text-text-subtle">
+                    {item.label}
+                  </p>
+                  <a
+                    href={item.href}
+                    className="mt-1 inline-block text-base text-text transition-colors hover:text-accent"
+                    {...(/^https?:\/\//.test(item.href)
+                      ? { target: '_blank', rel: 'noreferrer' }
+                      : {})}
+                  >
+                    {item.value}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </Section>
     </Container>
   )

@@ -2,7 +2,7 @@
 
 Instructions for AI coding agents working in this repository.
 
-**Not a site asset.** This file is for agent/developer context only. Azure Static Web Apps deploys **only** from `.output/public` (see CI workflow). Root files such as `AGENTS.md`, `docs/`, tests, and config are **not** published to allenfirth.info.
+**Not a site asset.** This file is for agent/developer context only. Cloudflare Pages deploys static files from `.output/public` plus the root `functions/` directory. Root files such as `AGENTS.md`, `docs/`, and tests are **not** published as site pages.
 
 ---
 
@@ -27,7 +27,8 @@ Design / plan docs (if present): `docs/superpowers/specs/`, `docs/superpowers/pl
 | Styling | **Tailwind CSS v4** (`@tailwindcss/vite`), tokens in `src/styles/app.css` |
 | Language | **TypeScript** |
 | Tests | **Vitest** (`tests/`) |
-| Hosting | **Azure Static Web Apps** |
+| Hosting | **Cloudflare Pages** (Git integration) |
+| Contact API | **Pages Function** `functions/api/contact.ts` → Resend |
 
 Do **not** reintroduce Next.js, Pages Router, or the old Tailwind UI Spotlight shell.
 
@@ -38,15 +39,15 @@ Do **not** reintroduce Next.js, Pages Router, or the old Tailwind UI Spotlight s
 ```
 src/
   routes/          # File-based routes (__root, index, about, experience, work, …)
-  components/      # UI primitives (Button, Card, Header, …)
+  components/      # UI primitives (Button, Card, Header, ContactForm, …)
   content/         # Typed content modules (site, experience, skills, work)
-  lib/             # dates, seo helpers, theme
+  lib/             # dates, seo, theme, contact validation + Resend handler
   styles/app.css   # Design tokens + Tailwind entry
   assets/          # Portrait and bundled images
-public/            # CV PDF, favicons, robots.txt (static copy-through)
+public/            # CV PDF, favicons, robots.txt, _headers
+functions/api/     # Pages Function: POST /api/contact → Resend
 scripts/           # generate-sitemap.mjs (runs as part of npm run build)
-staticwebapp.config.json
-.github/workflows/ # Azure SWA CI/CD
+wrangler.toml      # local Pages Functions / CONTACT_* defaults only
 ```
 
 Content is **data**, not JSX walls of prose: edit `src/content/*.ts` for experience, skills, work, site meta.
@@ -57,11 +58,18 @@ Content is **data**, not JSX walls of prose: edit `src/content/*.ts` for experie
 
 ```sh
 npm install
-npm run dev          # local dev
+npm run dev          # local UI (Vite). /api/contact is not served here.
 npm test             # vitest
 npm run typecheck
 npm run build        # sitemap + vite build + prerender → .output/public
-npm run preview      # preview production build
+npm run preview      # preview production static build (no Functions)
+```
+
+Contact API locally (after `npm run build`):
+
+```sh
+cp .dev.vars.example .dev.vars   # add RESEND_API_KEY
+npx wrangler pages dev .output/public
 ```
 
 Before claiming work is done: run **`npm test`** and **`npm run build`** when changes affect content, routes, or config.
@@ -88,6 +96,7 @@ Keep the site scannable for a 10-second recruiter pass.
 - Do **not** backdate AI onto roles that ended before mid-2025 unless factually true.  
 - Work case studies: NDA-safe; prefer outcomes and metrics over confidential detail.  
 - Site identity: `src/content/site.ts` (title, SEO, links, CV path).  
+- Contact: form (name, email, message) posts to `/api/contact`. Keep mailto fallback. Do not put `RESEND_API_KEY` in the repo — use Cloudflare secrets / `.dev.vars`.  
 
 ---
 
@@ -101,22 +110,40 @@ Keep the site scannable for a 10-second recruiter pass.
 
 ---
 
-## Deploy (Azure Static Web Apps)
+## Deploy (Cloudflare Pages)
 
-Workflow: `.github/workflows/azure-static-web-apps-lemon-dune-002898003.yml`
+Primary host is **Cloudflare Pages** (Git integration on `master`).
 
-1. GitHub Actions builds on the **runner**: `npm install` + `npm run build`  
-2. Deploy with **`skip_app_build: true`** and **`app_location: .output/public`**  
+Dashboard settings:
 
-**Why:** TanStack prerender starts a Vite preview server; that fails inside SWA Oryx Docker (`ECONNREFUSED 127.0.0.1`). Never revert to Oryx-only `app_build_command` without verifying prerender.
+| Setting | Value |
+|--------|--------|
+| Build command | `npm test && npm run typecheck && npm run build` |
+| Output directory | `.output/public` |
+| Production branch | `master` |
 
-Static config source: repo-root `staticwebapp.config.json` (copied into `public/` during the sitemap script). Deployed artifact is still only under `.output/public`.
+Root `functions/` is published with that build (including PR previews). **Do not** set `pages_build_output_dir` in `wrangler.toml` — that makes Pages skip the dashboard build command.
+
+Secrets (Pages project → Settings → Variables and Secrets):
+
+| Name | Required | Notes |
+|------|----------|--------|
+| `RESEND_API_KEY` | Yes | Resend API key — type **Secret**. Enable for Production **and** Preview. |
+| `CONTACT_TO` | No | Defaults to `allen@codestream.co.za` |
+| `CONTACT_FROM` | No | Defaults to `Allen Firth <noreply@codestream.co.za>` — sending domain must be verified in Resend |
+
+If `RESEND_API_KEY` is missing the Function returns HTTP 500 with `Contact form is not configured`.
+
+Headers: `public/_headers` (copied into `.output/public` by the build).
+
+If a Pages Git build fails because prerender cannot bind `127.0.0.1:4173`, fall back to a GitHub Action that builds on the runner and `wrangler pages deploy .output/public`. Do not switch to TanStack Start on Workers SSR unless explicitly requested.
 
 ---
 
 ## Testing notes
 
 - Content helpers: `tests/content.test.ts`, `tests/dates.test.ts`, `tests/work.test.ts`  
+- Contact: `tests/contact.test.ts`, `tests/contact-handler.test.ts`  
 - Work slugs used by sitemap script must stay in sync with `src/content/work.ts` (tests guard this).  
 - Prerender must emit HTML for `/`, `/about`, `/experience`, `/skills`, `/contact`, `/work`, and each work slug.  
 
@@ -125,7 +152,7 @@ Static config source: repo-root `staticwebapp.config.json` (copied into `public/
 ## Out of scope (unless explicitly requested)
 
 - Blog / RSS  
-- Contact form backend  
+- Captcha / Turnstile (add only if spam becomes a problem)  
 - Engagement / pricing sales pages  
 - CMS  
 - TanStack Query for remote data (content is build-time)  
@@ -137,4 +164,4 @@ Static config source: repo-root `staticwebapp.config.json` (copied into `public/
 - Prefer small, focused files and existing patterns.  
 - Match product-UI tokens; avoid one-off zinc/teal Spotlight leftovers.  
 - Ask before destructive git operations (hard reset, force-push).  
-- After deploy-related changes, remind to verify Azure Actions and the live/preview URL.  
+- After deploy-related changes, remind to verify the Cloudflare Pages build (Functions uploaded) and the live/preview URL.  

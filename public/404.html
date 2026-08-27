@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found — Allen Firth</title>
+    <style>
+      :root {
+        --bg: #fafafa;
+        --text: #18181b;
+        --muted: #52525b;
+        --accent: #4f46e5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #09090b;
+          --text: #fafafa;
+          --muted: #a1a1aa;
+          --accent: #818cf8;
+        }
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--muted);
+      }
+      main {
+        max-width: 28rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .eyebrow {
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      h1 {
+        margin: 0.75rem 0 0;
+        font-size: 1.875rem;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        color: var(--text);
+      }
+      p {
+        margin: 0.75rem 0 0;
+        line-height: 1.6;
+      }
+      a {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">404</p>
+      <h1>Page not found</h1>
+      <p>The page you are looking for does not exist or has been moved.</p>
+      <a href="/">Back to home</a>
+    </main>
+  </body>
+</html>

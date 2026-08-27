@@ -1,12 +1,10 @@
 /**
- * Generates public/sitemap.xml for allenfirth.info and ensures
- * staticwebapp.config.json is present under public/ so it ships in
- * .output/public (Azure SWA output_location).
+ * Generates public/sitemap.xml for allenfirth.info.
  *
  * WORK_SLUGS must stay in sync with src/content/work.ts
  * (asserted by tests/work.test.ts).
  */
-import { copyFileSync, writeFileSync } from 'node:fs'
+import { writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -39,10 +37,3 @@ const publicDir = join(root, 'public')
 
 writeFileSync(join(publicDir, 'sitemap.xml'), body)
 console.log(`Wrote public/sitemap.xml (${urls.length} urls)`)
-
-// Azure deploys only .output/public; copy SWA config into public so Vite emits it.
-copyFileSync(
-  join(root, 'staticwebapp.config.json'),
-  join(publicDir, 'staticwebapp.config.json'),
-)
-console.log('Copied staticwebapp.config.json → public/')

@@ -1,0 +1,5 @@
+# Copy to `.dev.vars` for local `wrangler pages dev` (never commit `.dev.vars`).
+RESEND_API_KEY=re_xxxxxxxx
+# Optional overrides:
+# CONTACT_TO=allen@codestream.co.za
+# CONTACT_FROM=Allen Firth <noreply@codestream.co.za>
