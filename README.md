@@ -15,7 +15,8 @@ The site is a **static**, recruiter-facing professional presence: home, about, e
 | Build | Vite 8, Nitro, static prerender |
 | Styles | Tailwind CSS v4 (`src/styles/app.css`) |
 | Tests | Vitest |
-| Hosting | Azure Static Web Apps |
+| Hosting | Cloudflare Pages |
+| Contact | Pages Function + Resend (`POST /api/contact`) |
 
 Node **22+** is recommended (matches CI).
 
@@ -47,7 +48,7 @@ Open the URL Vite prints (usually `http://localhost:3000`).
 | `npm run test:watch` | Vitest in watch mode |
 | `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
 | `npm run build` | Generate sitemap, production build, prerender → `.output/public` |
-| `npm run preview` | Serve the production build locally |
+| `npm run preview` | Serve the production static build locally (no Functions) |
 
 ---
 
@@ -56,15 +57,15 @@ Open the URL Vite prints (usually `http://localhost:3000`).
 ```
 src/
   routes/           # Pages (file-based routing)
-  components/       # Shared UI (Header, Card, Timeline, …)
+  components/       # Shared UI (Header, Card, Timeline, ContactForm, …)
   content/          # Site copy and structured data
-  lib/              # Small helpers (dates, SEO, theme)
+  lib/              # Small helpers (dates, SEO, theme, contact)
   styles/app.css    # Design tokens + Tailwind entry
   assets/           # Images imported by the app (e.g. portrait)
-public/             # Static files copied as-is (CV PDF, favicons, robots.txt)
+public/             # Static files copied as-is (CV PDF, favicons, robots.txt, _headers)
+functions/api/      # Cloudflare Pages Function for the contact form
 scripts/            # Build helpers (sitemap generation)
-staticwebapp.config.json
-.github/workflows/  # Azure Static Web Apps CI/CD
+wrangler.toml       # Local Pages Functions only
 ```
 
 ### Routes
@@ -72,12 +73,12 @@ staticwebapp.config.json
 | Path | Purpose |
 |------|---------|
 | `/` | Landing / hero, highlights, recent experience, work, skills snapshot |
-| `/about` | Bio, portrait, contact links |
+| `/about` | Bio, portrait, social links |
 | `/experience` | Full role timeline |
 | `/work` | Case study index |
 | `/work/:slug` | Individual case study |
 | `/skills` | Skill groups |
-| `/contact` | Email, phone, social, CV download |
+| `/contact` | Message form, social links, CV download |
 
 ---
 
@@ -87,7 +88,7 @@ Almost all copy lives under **`src/content/`**:
 
 | File | Contents |
 |------|----------|
-| `site.ts` | Name, title line, SEO description, email, phone, social links, CV path |
+| `site.ts` | Name, title line, SEO description, social links, CV path |
 | `experience.ts` | Roles (newest first): company, dates, bullets, stack |
 | `skills.ts` | Skill groups and chips |
 | `work.ts` | Case studies (`slug`, metrics, sections, `featured`, `order`) |
@@ -121,7 +122,7 @@ npm run build   # optional locally; CI runs this on push
 npm test
 ```
 
-Tests cover content helpers and invariants (unique role IDs, work slugs, date formatting). When you add a work case study, update **`src/content/work.ts`** and keep sitemap slug lists in sync (tests will fail if they drift).
+Tests cover content helpers, contact validation/Resend payload shaping, and invariants (unique role IDs, work slugs, date formatting). When you add a work case study, update **`src/content/work.ts`** and keep sitemap slug lists in sync (tests will fail if they drift).
 
 ---
 
@@ -131,10 +132,10 @@ Tests cover content helpers and invariants (unique role IDs, work slugs, date fo
 npm run build
 ```
 
-1. `scripts/generate-sitemap.mjs` writes `public/sitemap.xml` (gitignored) and copies SWA config into `public/` for the build.  
+1. `scripts/generate-sitemap.mjs` writes `public/sitemap.xml` (gitignored).  
 2. Vite/Nitro builds and **prerenders** routes into **`.output/public`**.
 
-That folder is what gets deployed. Preview it with:
+That folder is the static output Cloudflare Pages publishes, together with root `functions/`. Preview the static build with:
 
 ```sh
 npm run preview
@@ -142,24 +143,53 @@ npm run preview
 
 ---
 
-## Deploy (Azure Static Web Apps)
+## Contact form
 
-Production deploys from **`master`**. Pull requests to `master` get preview environments.
+Fields: **name**, **email**, **message**. The form posts to `/api/contact` (`functions/api/contact.ts`), which emails `CONTACT_TO` via Resend (`reply_to` is the visitor’s address). The public site does not show a personal email or phone.
 
-Workflow: `.github/workflows/azure-static-web-apps-lemon-dune-002898003.yml`
+### Local API
 
-What CI does:
+```sh
+cp .dev.vars.example .dev.vars   # add your RESEND_API_KEY
+npm run build
+npx wrangler pages dev .output/public
+```
 
-1. Checkout  
-2. Node 22, `npm install`, `npm run build` **on the GitHub runner**  
-3. Deploy **`.output/public`** with `skip_app_build: true`  
+`npm run dev` does not serve the Function; the form will show an error until you run Pages Functions locally.
 
-**Why not build inside Azure’s Oryx container?**  
-TanStack prerender starts a local Vite preview server. That step fails inside the SWA Oryx Docker environment (`ECONNREFUSED`). Building on the runner avoids that.
+### Secrets (Cloudflare Pages)
 
-Required secret (repo settings): `AZURE_STATIC_WEB_APPS_API_TOKEN_LEMON_DUNE_002898003`.
+The Function reads `RESEND_API_KEY` at **runtime**. Set secrets in the Pages project → **Settings** → **Variables and Secrets**:
 
-Routing / headers for the static host: **`staticwebapp.config.json`** (source of truth in the repo root).
+| Name | Required | Notes |
+|------|----------|--------|
+| `RESEND_API_KEY` | Yes | Resend API key — type **Secret** |
+| `CONTACT_TO` | No | Defaults to `allen@codestream.co.za` |
+| `CONTACT_FROM` | No | Defaults to `Allen Firth <noreply@codestream.co.za>` — domain must be verified in Resend |
+
+Enable the secret for **Preview** and **Production**. Existing deploys do not pick up new secrets until redeployed.
+
+---
+
+## Deploy (Cloudflare Pages)
+
+Production deploys from **`master`**. Pull requests get `*.pages.dev` previews.
+
+Connect the GitHub repo in the Cloudflare dashboard:
+
+| Setting | Value |
+|---------|--------|
+| Build command | `npm install --no-audit --no-fund && npm test && npm run typecheck && npm run build` |
+| Output directory | `.output/public` |
+| Production branch | `master` |
+
+Also set **`SKIP_DEPENDENCY_INSTALL`** = `true` (Production and Preview). Cloudflare otherwise runs `npm ci` before the build command; this repo’s lockfile can fail that check on Linux (`Missing: lru-cache@… from lock file`). `npm install` still respects the lockfile, which is what Azure CI used.
+
+Do **not** add `pages_build_output_dir` to `wrangler.toml`.
+
+After the first successful Pages deploy, attach the custom domain `allenfirth.info` (DNS is already on Cloudflare). Then retire the old Azure Static Web Apps resource so it is no longer the origin.
+
+Confirm in the deploy log that Functions were uploaded (`Found Functions directory at /functions`).
 
 ---
 

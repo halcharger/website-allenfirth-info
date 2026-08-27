@@ -1,0 +1,14 @@
+# Local Pages Functions development only.
+#   npm run build
+#   npx wrangler pages dev .output/public
+#
+# Do NOT set `pages_build_output_dir` here. When that key is present, Cloudflare
+# Pages Git builds treat this file as the source of truth for build config and
+# skip the dashboard build command.
+
+name = "allenfirth-info"
+compatibility_date = "2026-08-26"
+
+[vars]
+CONTACT_TO = "allen@codestream.co.za"
+CONTACT_FROM = "Allen Firth <noreply@codestream.co.za>"

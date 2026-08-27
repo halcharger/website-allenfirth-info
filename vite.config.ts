@@ -16,7 +16,7 @@ export default defineConfig({
     port: 3000,
   },
   // Prerender starts `vite preview` and fetches pages from it. Pin host/port so
-  // CI runners resolve a reachable URL (SWA Oryx Docker cannot do this step).
+  // CI / Pages builds resolve a reachable URL.
   preview: {
     host: '127.0.0.1',
     port: 4173,
@@ -40,6 +40,9 @@ export default defineConfig({
       },
     }),
     viteReact(),
-    nitro(),
+    // Pin node-server so CI on Cloudflare Pages does not auto-select the
+    // cloudflare-pages preset (that writes dist/_worker.js and prerenders via
+    // `wrangler pages dev --host`, which Wrangler 4 rejects).
+    nitro({ preset: 'node-server' }),
   ],
 })
