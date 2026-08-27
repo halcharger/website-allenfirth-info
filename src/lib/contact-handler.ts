@@ -48,6 +48,7 @@ export async function handleContactPost(
   options?: {
     fetchImpl?: typeof fetch
     now?: () => Date
+    logError?: (message: string, extra?: Record<string, unknown>) => void
   },
 ): Promise<ContactResult> {
   const contentType = request.contentType ?? ''
@@ -127,6 +128,19 @@ export async function handleContactPost(
   })
 
   if (!resendResponse.ok) {
+    let detail = ''
+    try {
+      detail = (await resendResponse.text()).slice(0, 1000)
+    } catch {
+      detail = ''
+    }
+    const logError = options?.logError ?? console.error
+    logError('Resend rejected contact email', {
+      status: resendResponse.status,
+      from,
+      to,
+      detail,
+    })
     return { status: 502, body: { error: 'Failed to send message' } }
   }
 

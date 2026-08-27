@@ -98,11 +98,27 @@ describe('handleContactPost', () => {
   })
 
   it('returns 502 when Resend rejects the send', async () => {
-    const fetchMock = vi.fn().mockResolvedValue({ ok: false, status: 401 })
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 403,
+      text: async () =>
+        '{"statusCode":403,"name":"validation_error","message":"domain is not verified"}',
+    })
+    const logError = vi.fn()
     const result = await handleContactPost(jsonRequest(validBody), env, {
       fetchImpl: fetchMock,
+      logError,
     })
     expect(result.status).toBe(502)
     expect(result.body).toEqual({ error: 'Failed to send message' })
+    expect(logError).toHaveBeenCalledWith(
+      'Resend rejected contact email',
+      expect.objectContaining({
+        status: 403,
+        from: env.CONTACT_FROM,
+        to: env.CONTACT_TO,
+        detail: expect.stringContaining('domain is not verified'),
+      }),
+    )
   })
 })
