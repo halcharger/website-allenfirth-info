@@ -15,9 +15,6 @@ export const Route = createFileRoute('/about')({
   component: AboutPage,
 })
 
-/** E.164-style tel: target (drop spaces, brackets, and trunk 0). */
-const phoneTel = site.phone.replace(/[^\d+]/g, '').replace(/^\+270/, '+27')
-
 const socialLinks = [
   {
     label: 'GitHub',
@@ -35,14 +32,9 @@ const socialLinks = [
     href: site.links.codestream,
   },
   {
-    label: 'Email',
-    value: site.email,
-    href: `mailto:${site.email}`,
-  },
-  {
-    label: 'Phone',
-    value: site.phone,
-    href: `tel:${phoneTel}`,
+    label: 'Message',
+    value: 'Contact form',
+    href: '/contact',
   },
 ] as const
 

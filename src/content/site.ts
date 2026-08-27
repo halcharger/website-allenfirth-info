@@ -1,8 +1,6 @@
 export const site = {
   name: 'Allen Firth',
   title: 'Senior software engineer — AI-augmented delivery',
-  email: 'allen@codestream.co.za',
-  phone: '+27 (0)60 840 7793',
   location: 'Durban, South Africa',
   links: {
     linkedin: 'https://www.linkedin.com/in/allenfirth',

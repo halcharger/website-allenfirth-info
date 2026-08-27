@@ -5,7 +5,6 @@ import {
   isContactFormValid,
   type ContactFormValues,
 } from '@/lib/contact'
-import { site } from '@/content/site'
 import { twMerge } from 'tailwind-merge'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
@@ -79,9 +78,7 @@ export function ContactForm() {
       setStatus('success')
     } catch {
       setStatus('error')
-      setErrorMessage(
-        'Could not reach the server. Please try again or email me directly.',
-      )
+      setErrorMessage('Could not reach the server. Please try again.')
     }
   }
 
@@ -96,14 +93,7 @@ export function ContactForm() {
         Message
       </p>
       <p className="mt-2 text-sm leading-relaxed text-text-muted">
-        Send a note and I will get back to you. Or email{' '}
-        <a
-          href={`mailto:${site.email}`}
-          className="text-text transition-colors hover:text-accent"
-        >
-          {site.email}
-        </a>
-        .
+        Send a note and I will get back to you.
       </p>
 
       <div className="relative mt-6 space-y-4">

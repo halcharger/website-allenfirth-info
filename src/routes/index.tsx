@@ -182,7 +182,7 @@ function Home() {
         className="pb-20"
       >
         <div className="flex flex-wrap gap-3">
-          <Button href={`mailto:${site.email}`}>Email</Button>
+          <Button href="/contact">Send a message</Button>
           <Button href={site.links.linkedin} variant="secondary">
             LinkedIn
           </Button>
@@ -190,16 +190,7 @@ function Home() {
             Download CV
           </Button>
         </div>
-        <p className="mt-4 text-sm text-text-subtle">
-          <a
-            href={`mailto:${site.email}`}
-            className="transition-colors hover:text-accent"
-          >
-            {site.email}
-          </a>
-          {" · "}
-          {site.location}
-        </p>
+        <p className="mt-4 text-sm text-text-subtle">{site.location}</p>
       </Section>
     </Container>
   );

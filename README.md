@@ -73,12 +73,12 @@ wrangler.toml       # Local Pages Functions only
 | Path | Purpose |
 |------|---------|
 | `/` | Landing / hero, highlights, recent experience, work, skills snapshot |
-| `/about` | Bio, portrait, contact links |
+| `/about` | Bio, portrait, social links |
 | `/experience` | Full role timeline |
 | `/work` | Case study index |
 | `/work/:slug` | Individual case study |
 | `/skills` | Skill groups |
-| `/contact` | Message form, email, phone, social, CV download |
+| `/contact` | Message form, social links, CV download |
 
 ---
 
@@ -88,7 +88,7 @@ Almost all copy lives under **`src/content/`**:
 
 | File | Contents |
 |------|----------|
-| `site.ts` | Name, title line, SEO description, email, phone, social links, CV path |
+| `site.ts` | Name, title line, SEO description, social links, CV path |
 | `experience.ts` | Roles (newest first): company, dates, bullets, stack |
 | `skills.ts` | Skill groups and chips |
 | `work.ts` | Case studies (`slug`, metrics, sections, `featured`, `order`) |
@@ -145,7 +145,7 @@ npm run preview
 
 ## Contact form
 
-Fields: **name**, **email**, **message**. The form posts to `/api/contact` (`functions/api/contact.ts`), which emails `allen@codestream.co.za` via Resend (`reply_to` is the visitor’s address). Mailto remains as a fallback.
+Fields: **name**, **email**, **message**. The form posts to `/api/contact` (`functions/api/contact.ts`), which emails `CONTACT_TO` via Resend (`reply_to` is the visitor’s address). The public site does not show a personal email or phone.
 
 ### Local API
 
@@ -155,7 +155,7 @@ npm run build
 npx wrangler pages dev .output/public
 ```
 
-`npm run dev` does not serve the Function; the form will show an error and still offer mailto.
+`npm run dev` does not serve the Function; the form will show an error until you run Pages Functions locally.
 
 ### Secrets (Cloudflare Pages)
 

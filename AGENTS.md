@@ -96,7 +96,7 @@ Keep the site scannable for a 10-second recruiter pass.
 - Do **not** backdate AI onto roles that ended before mid-2025 unless factually true.  
 - Work case studies: NDA-safe; prefer outcomes and metrics over confidential detail.  
 - Site identity: `src/content/site.ts` (title, SEO, links, CV path).  
-- Contact: form (name, email, message) posts to `/api/contact`. Keep mailto fallback. Do not put `RESEND_API_KEY` in the repo — use Cloudflare secrets / `.dev.vars`.  
+- Contact: form (name, email, message) posts to `/api/contact`. Do not publish a personal email or phone on the site. Do not put `RESEND_API_KEY` in the repo — use Cloudflare secrets / `.dev.vars`.  
 
 ---
 

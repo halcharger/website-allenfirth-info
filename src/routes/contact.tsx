@@ -12,25 +12,12 @@ export const Route = createFileRoute('/contact')({
       title: 'Contact',
       path: '/contact',
       description:
-        'Get in touch with Allen Firth — send a message, or use email, phone, LinkedIn, GitHub, or download the CV.',
+        'Get in touch with Allen Firth — send a message, or use LinkedIn, GitHub, or download the CV.',
     }),
   component: ContactPage,
 })
 
-/** E.164-style tel: target (drop spaces, brackets, and trunk 0). */
-const phoneTel = site.phone.replace(/[^\d+]/g, '').replace(/^\+270/, '+27')
-
 const contactLinks = [
-  {
-    label: 'Email',
-    value: site.email,
-    href: `mailto:${site.email}`,
-  },
-  {
-    label: 'Phone',
-    value: site.phone,
-    href: `tel:${phoneTel}`,
-  },
   {
     label: 'LinkedIn',
     value: 'linkedin.com/in/allenfirth',
