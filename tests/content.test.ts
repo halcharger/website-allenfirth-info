@@ -9,6 +9,33 @@ describe('experience content', () => {
   it('includes Uniper engagement', () => {
     expect(experience.some((r) => /uniper/i.test(r.company + r.title))).toBe(true)
   })
+  it('lists the current corfinancial Salerio contract first', () => {
+    const role = experience[0]
+    expect(role).toMatchObject({
+      id: 'corfinancial-salerio',
+      company: 'corfinancial',
+      title: 'Lead front-end developer — Salerio',
+      start: '2026-02',
+      end: null,
+      location: 'London, UK — remote',
+      employment: 'via Digiterre',
+      stack: ['React', 'TypeScript', 'Zustand', 'Zod'],
+      links: [
+        {
+          label: 'corfinancial Salerio product information',
+          href: 'https://www.corfinancialgroup.com/financial-software-products/salerio-post-trade-processing/',
+        },
+      ],
+    })
+    expect(role?.summary).toMatch(/Salerio/)
+    expect(role?.summary).toMatch(/React and TypeScript/)
+    expect(role?.bullets.join(' ')).toMatch(/90%/)
+    expect(getRecentRoles(3).map((item) => item.id)).toEqual([
+      'corfinancial-salerio',
+      'uniper-ppa-valuation',
+      'corfinancial-bitarisk',
+    ])
+  })
   it('getRecentRoles returns at most N newest', () => {
     const recent = getRecentRoles(2)
     expect(recent.length).toBeLessThanOrEqual(2)

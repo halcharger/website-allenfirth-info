@@ -15,6 +15,29 @@ export type Role = {
 /** Roles newest-first. */
 export const experience: Role[] = [
   {
+    id: 'corfinancial-salerio',
+    company: 'corfinancial',
+    title: 'Lead front-end developer — Salerio',
+    start: '2026-02',
+    end: null,
+    location: 'London, UK — remote',
+    employment: 'via Digiterre',
+    summary:
+      'Leading the front-end rewrite of Salerio, corfinancial’s trade management and exception-handling platform, from a legacy C# Windows UI to a web-hosted React and TypeScript application.',
+    bullets: [
+      'One of two developers replacing that Windows interface with the new web application',
+      'Delivered 90% of screens and functionality to date',
+      'Used AI across the rewrite to accelerate delivery, with all code human-reviewed and optimised where a senior pass still improves it',
+    ],
+    stack: ['React', 'TypeScript', 'Zustand', 'Zod'],
+    links: [
+      {
+        label: 'corfinancial Salerio product information',
+        href: 'https://www.corfinancialgroup.com/financial-software-products/salerio-post-trade-processing/',
+      },
+    ],
+  },
+  {
     id: 'uniper-ppa-valuation',
     company: 'Uniper',
     title: 'Lead full-stack consultant — PPA Model Valuation Desktop',
