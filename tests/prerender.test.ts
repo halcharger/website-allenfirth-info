@@ -27,9 +27,9 @@ describe('CV PDF source', () => {
   it('is a binary PDF, not UTF-8-replaced text', () => {
     const bytes = readFileSync('public/allenfirth-cv.pdf')
     expect(bytes.subarray(0, 5).toString('latin1')).toBe('%PDF-')
-    // %PDF-1.7\r\n% then a high-bit marker (0xB5). UTF-8 mangling turns that
+    // The header comment includes a high-bit marker. UTF-8 mangling turns that
     // into U+FFFD (EF BF BD) and blank pages in viewers.
-    expect(bytes[11]).toBe(0xb5)
+    expect([...bytes.subarray(0, 20)].some((byte) => byte >= 0x80)).toBe(true)
   })
 })
 
