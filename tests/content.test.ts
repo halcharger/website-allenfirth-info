@@ -32,9 +32,33 @@ describe('experience content', () => {
     expect(role?.bullets.join(' ')).toMatch(/90%/)
     expect(getRecentRoles(3).map((item) => item.id)).toEqual([
       'corfinancial-salerio',
+      'stuart-peters-plm',
       'uniper-ppa-valuation',
-      'corfinancial-bitarisk',
     ])
+  })
+  it('lists the Stuart Peters PLM engagement second', () => {
+    const role = experience[1]
+    expect(role).toMatchObject({
+      id: 'stuart-peters-plm',
+      company: 'Stuart Peters',
+      title: 'Business analyst and software architect — PLM replacement',
+      start: '2025-04',
+      end: '2025-12',
+      location: 'London, UK and Hong Kong',
+      employment: 'via CodeStream',
+      stack: ['React', 'MongoDB'],
+      links: [
+        {
+          label: 'Stuart Peters',
+          href: 'https://www.speters.co.uk/',
+        },
+      ],
+    })
+    expect(role?.summary).toMatch(/Lectra Kubix Link/)
+    expect(role?.summary).toMatch(/130-page report/)
+    expect(role?.bullets.join(' ')).toMatch(/Hong Kong/)
+    expect(role?.bullets.join(' ')).toMatch(/130-page report/)
+    expect(role?.bullets.join(' ')).toMatch(/supplier workflows/)
   })
   it('getRecentRoles returns at most N newest', () => {
     const recent = getRecentRoles(2)

@@ -38,6 +38,30 @@ export const experience: Role[] = [
     ],
   },
   {
+    id: 'stuart-peters-plm',
+    company: 'Stuart Peters',
+    title: 'Business analyst and software architect — PLM replacement',
+    start: '2025-04',
+    end: '2025-12',
+    location: 'London, UK and Hong Kong',
+    employment: 'via CodeStream',
+    summary:
+      'Interviewed stakeholders at Stuart Peters, a UK fashion design and sourcing business, and delivered a 130-page report that led the business to adopt Lectra Kubix Link as its preferred product lifecycle management (PLM) replacement. Also took over support and maintenance of the React and MongoDB application used to manage supplier workflows.',
+    bullets: [
+      'Interviewed stakeholders on site at the London head office and the Hong Kong regional office',
+      'Delivered a 130-page report on how the business runs, how its existing PLM systems aided the business process, where they were lacking, and detailed recommendations on the way forward',
+      'Recommended Lectra Kubix Link, which Stuart Peters adopted as its preferred replacement PLM',
+      'Took over support and maintenance of the existing React and MongoDB application for supplier workflows',
+    ],
+    stack: ['React', 'MongoDB'],
+    links: [
+      {
+        label: 'Stuart Peters',
+        href: 'https://www.speters.co.uk/',
+      },
+    ],
+  },
+  {
     id: 'uniper-ppa-valuation',
     company: 'Uniper',
     title: 'Lead full-stack consultant — PPA Model Valuation Desktop',
