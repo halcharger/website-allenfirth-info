@@ -20,7 +20,7 @@ export const work: WorkItem[] = [
     title: 'PPA Model Valuation Desktop',
     client: 'Uniper',
     clientType: 'Energy trading',
-    year: '2022–2025',
+    year: '2022–2023',
     role: 'Lead full-stack consultant',
     outcome:
       'Rebuilt a failed PPA valuation workspace so traders and analysts could manage model inputs and inspect renewable timeseries with order-of-magnitude faster critical paths.',
@@ -59,7 +59,7 @@ export const work: WorkItem[] = [
     title: 'Municipal Market Monitor (TM3)',
     client: 'London Stock Exchange Group',
     clientType: 'Financial markets',
-    year: '2022–2025',
+    year: '2023–2024',
     role: 'Full-stack consultant',
     outcome:
       'Redeveloped TM3 for LSEG Workspace with multi-source integration and live trade streaming, enabling migration off the legacy product through multiple production releases.',

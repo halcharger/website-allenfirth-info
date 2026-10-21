@@ -6,8 +6,24 @@ describe('experience content', () => {
     const ids = experience.map((r) => r.id)
     expect(new Set(ids).size).toBe(ids.length)
   })
-  it('includes Uniper engagement', () => {
-    expect(experience.some((r) => /uniper/i.test(r.company + r.title))).toBe(true)
+  it('lists the older corfinancial bitarisk engagement as Jul 2024 – Mar 2025', () => {
+    const role = experience.find((r) => r.id === 'corfinancial-bitarisk')
+    expect(role).toMatchObject({
+      company: 'corfinancial',
+      start: '2024-07',
+      end: '2025-03',
+    })
+    expect(experience[0]?.id).not.toBe('corfinancial-bitarisk')
+  })
+  it('lists Uniper after LSEG at Jul 2022 – May 2023', () => {
+    const ids = experience.map((r) => r.id)
+    const role = experience.find((r) => r.id === 'uniper-ppa-valuation')
+    expect(role).toMatchObject({
+      company: 'Uniper',
+      start: '2022-07',
+      end: '2023-05',
+    })
+    expect(ids.indexOf('uniper-ppa-valuation')).toBe(ids.indexOf('lseg-tm3') + 1)
   })
   it('lists the current corfinancial Salerio contract first', () => {
     const role = experience[0]
@@ -33,7 +49,7 @@ describe('experience content', () => {
     expect(getRecentRoles(3).map((item) => item.id)).toEqual([
       'corfinancial-salerio',
       'stuart-peters-plm',
-      'uniper-ppa-valuation',
+      'corfinancial-bitarisk',
     ])
   })
   it('lists the Stuart Peters PLM engagement second', () => {
