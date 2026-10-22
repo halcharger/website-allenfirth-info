@@ -59,12 +59,13 @@ describe('project content', () => {
     expect(body).toMatch(/quote/i)
   })
 
-  it('describes CarwashPro as an unreleased carwash queue application', () => {
+  it('describes CarwashPro as a carwash queue application', () => {
     const project = getProjectBySlug('carwashpro')
     expect(project?.title).toBe('CarwashPro')
     expect(project?.year).toBe('2026')
     expect(project?.publisher).toBe('CodeStream')
-    expect(project?.summary).toMatch(/still in development/i)
+    expect(project?.summary).toMatch(/small carwash businesses/i)
+    expect(JSON.stringify(project)).not.toMatch(/in development|not yet released|unreleased/i)
     expect(project?.stack).toEqual(
       expect.arrayContaining([
         'React',
@@ -78,7 +79,6 @@ describe('project content', () => {
       ]),
     )
     const body = project?.sections.map((section) => section.body).join(' ')
-    expect(body).toMatch(/not yet released/i)
     expect(body).toMatch(/licence disc/i)
     expect(body).toMatch(/Supabase/)
     expect(body).toMatch(/text message/i)

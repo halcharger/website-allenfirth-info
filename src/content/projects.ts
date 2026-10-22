@@ -87,7 +87,7 @@ export const projects: ProjectItem[] = [
     year: '2026',
     publisher: 'CodeStream',
     summary:
-      'A mobile web application for small carwash businesses, still in development. Each car is scanned in from its licence disc and tracked from the queue through the wash to collection, with a text message at the key stages.',
+      'A mobile web application for small carwash businesses. Each car is scanned in from its licence disc and tracked from the queue through the wash to collection, with a text message at the key stages.',
     stack: [
       'React',
       'C#',
@@ -103,7 +103,7 @@ export const projects: ProjectItem[] = [
     sections: [
       {
         heading: 'Context',
-        body: 'CarwashPro is a browser application for small carwash businesses. It is still in development and not yet released. Staff scan a car’s licence disc to bring it into the system, then track it as it is queued, as the wash starts, as the wash is completed, and as the customer collects it.',
+        body: 'CarwashPro is a browser application for small carwash businesses. Staff scan a car’s licence disc to bring it into the system, then track it as it is queued, as the wash starts, as the wash is completed, and as the customer collects it.',
       },
       {
         heading: 'Approach',
