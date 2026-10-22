@@ -76,6 +76,13 @@ describe('experience content', () => {
     expect(role?.bullets.join(' ')).toMatch(/130-page report/)
     expect(role?.bullets.join(' ')).toMatch(/supplier workflows/)
   })
+  it('lists the Clifford Chance engagement via CodeStream', () => {
+    const role = experience.find((item) => item.id === 'clifford-chance-partner-remuneration')
+    expect(role).toMatchObject({
+      company: 'Clifford Chance',
+      employment: 'via CodeStream',
+    })
+  })
   it('getRecentRoles returns at most N newest', () => {
     const recent = getRecentRoles(2)
     expect(recent.length).toBeLessThanOrEqual(2)

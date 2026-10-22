@@ -138,6 +138,7 @@ export const experience: Role[] = [
     start: '2022-01',
     end: '2022-07',
     location: 'London, UK — remote',
+    employment: 'via CodeStream',
     summary:
       'Provided technical and architectural guidance to upgrade a global partner remuneration system covering multiple tax regions and country-specific tax rules.',
     bullets: [
