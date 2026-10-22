@@ -58,7 +58,7 @@ export function Header() {
               href={site.links.cv}
               className="hidden text-sm text-text-muted transition-colors hover:text-accent sm:inline"
             >
-              Download CV
+              Download Fullstack CV
             </a>
           ) : null}
           <ThemeToggle />

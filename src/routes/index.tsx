@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/Button";
+import { SpecialistCvLinks } from "@/components/SpecialistCvLinks";
 import { Card } from "@/components/Card";
 import { Container } from "@/components/Container";
 import { MetaChip } from "@/components/MetaChip";
@@ -55,11 +56,12 @@ function Home() {
               {heroSummary}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={site.links.cv}>Download CV</Button>
+              <Button href={site.links.cv}>Download Fullstack CV</Button>
               <Button href="/experience" variant="secondary">
                 View experience
               </Button>
             </div>
+            <SpecialistCvLinks />
           </div>
           <div className="flex justify-center lg:col-span-5 lg:justify-end">
             <img
@@ -196,7 +198,7 @@ function Home() {
             LinkedIn
           </Button>
           <Button href={site.links.cv} variant="ghost">
-            Download CV
+            Download Fullstack CV
           </Button>
         </div>
         <p className="mt-4 text-sm text-text-subtle">{site.location}</p>

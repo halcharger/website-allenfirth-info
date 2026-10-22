@@ -7,6 +7,8 @@ export const site = {
     github: 'https://github.com/halcharger',
     codestream: 'https://www.codestream.co.za',
     cv: '/allenfirth-cv.pdf',
+    cvFrontend: '/allenfirth-cv-frontend.pdf',
+    cvBackend: '/allenfirth-cv-backend.pdf',
   },
   seo: {
     defaultDescription:

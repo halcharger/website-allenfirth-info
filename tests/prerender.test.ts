@@ -6,7 +6,11 @@ import { site } from '../src/content/site'
 describe('shouldPrerenderPath', () => {
   it('skips the CV PDF so crawlLinks cannot UTF-8-corrupt it', () => {
     expect(shouldPrerenderPath(site.links.cv)).toBe(false)
+    expect(shouldPrerenderPath(site.links.cvFrontend)).toBe(false)
+    expect(shouldPrerenderPath(site.links.cvBackend)).toBe(false)
     expect(shouldPrerenderPath('/allenfirth-cv.pdf')).toBe(false)
+    expect(shouldPrerenderPath('/allenfirth-cv-frontend.pdf')).toBe(false)
+    expect(shouldPrerenderPath('/allenfirth-cv-backend.pdf')).toBe(false)
     expect(shouldPrerenderPath('/allenfirth-cv.pdf?download=1')).toBe(false)
   })
 
@@ -25,11 +29,32 @@ describe('shouldPrerenderPath', () => {
 
 describe('CV PDF source', () => {
   it('is a binary PDF, not UTF-8-replaced text', () => {
-    const bytes = readFileSync('public/allenfirth-cv.pdf')
-    expect(bytes.subarray(0, 5).toString('latin1')).toBe('%PDF-')
-    // The header comment includes a high-bit marker. UTF-8 mangling turns that
-    // into U+FFFD (EF BF BD) and blank pages in viewers.
-    expect([...bytes.subarray(0, 20)].some((byte) => byte >= 0x80)).toBe(true)
+    for (const path of [
+      site.links.cv,
+      site.links.cvFrontend,
+      site.links.cvBackend,
+    ]) {
+      const bytes = readFileSync(`public${path}`)
+      expect(bytes.subarray(0, 5).toString('latin1')).toBe('%PDF-')
+      // The header comment includes a high-bit marker. UTF-8 mangling turns that
+      // into U+FFFD (EF BF BD) and blank pages in viewers.
+      expect([...bytes.subarray(0, 20)].some((byte) => byte >= 0x80)).toBe(true)
+    }
+  })
+
+  it('keeps specialist CVs as quiet links under the primary download', () => {
+    const home = readFileSync('src/routes/index.tsx', 'utf8')
+    const contact = readFileSync('src/routes/contact.tsx', 'utf8')
+    const header = readFileSync('src/components/Header.tsx', 'utf8')
+
+    expect(home.match(/<SpecialistCvLinks \/>/g)).toHaveLength(1)
+    expect(contact.match(/<SpecialistCvLinks \/>/g)).toHaveLength(1)
+    expect(home.match(/Download Fullstack CV/g)).toHaveLength(2)
+    expect(contact).toContain('Download Fullstack CV')
+    expect(header).toContain('Download Fullstack CV')
+    expect(header).not.toContain('SpecialistCvLinks')
+    expect(header).not.toContain('cvFrontend')
+    expect(header).not.toContain('cvBackend')
   })
 })
 

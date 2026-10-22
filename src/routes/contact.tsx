@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@/components/Button'
+import { SpecialistCvLinks } from '@/components/SpecialistCvLinks'
 import { ContactForm } from '@/components/ContactForm'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
@@ -50,7 +51,8 @@ function ContactPage() {
 
           <div>
             <div className="mb-8">
-              <Button href={site.links.cv}>Download CV</Button>
+              <Button href={site.links.cv}>Download Fullstack CV</Button>
+              <SpecialistCvLinks />
             </div>
 
             <ul className="grid max-w-xl gap-4 sm:grid-cols-2">
