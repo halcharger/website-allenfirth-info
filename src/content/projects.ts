@@ -13,8 +13,8 @@ export type ProjectItem = {
 /** End-to-end systems. Not engagements, and not part of the experience timeline. */
 export const projects: ProjectItem[] = [
   {
-    slug: 'quirkz',
-    title: 'Quirkz',
+    slug: 'cosplay-platform',
+    title: 'Cosplay Platform',
     year: '2024–2025',
     publisher: 'CodeStream',
     summary:
@@ -31,7 +31,7 @@ export const projects: ProjectItem[] = [
     sections: [
       {
         heading: 'Context',
-        body: 'Quirkz is a social platform for the cosplay market. It was built for competitions at large fan conventions such as Comic Con, covering running, managing, and judging a contest as well as the contestant’s presence on the platform.',
+        body: 'A social platform for the cosplay market, built for competitions at large fan conventions such as Comic Con. It covers running, managing, and judging a contest as well as the contestant’s presence on the platform.',
       },
       {
         heading: 'Approach',

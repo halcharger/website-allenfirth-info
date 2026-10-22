@@ -22,7 +22,7 @@ const WORK_SLUGS = [
 ]
 
 // Must match getAllProjects().map(p => p.slug) — see tests/projects.test.ts
-const PROJECT_SLUGS = ['quirkz', 'contractorpro', 'carwashpro']
+const PROJECT_SLUGS = ['cosplay-platform', 'contractorpro', 'carwashpro']
 
 const urls = [
   ...staticRoutes,

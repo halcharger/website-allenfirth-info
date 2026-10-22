@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { getAllProjects, getProjectBySlug } from '../src/content'
 
 // Must match PROJECT_SLUGS in scripts/generate-sitemap.mjs
-const SITEMAP_SLUGS = ['quirkz', 'contractorpro', 'carwashpro']
+const SITEMAP_SLUGS = ['cosplay-platform', 'contractorpro', 'carwashpro']
 
 describe('project content', () => {
   it('returns unique slugs', () => {
@@ -10,13 +10,14 @@ describe('project content', () => {
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 
-  it('describes Quirkz as a cosplay competition platform', () => {
-    const quirkz = getProjectBySlug('quirkz')
-    expect(quirkz?.title).toBe('Quirkz')
-    expect(quirkz?.year).toBe('2024–2025')
-    expect(quirkz?.publisher).toBe('CodeStream')
-    expect(quirkz?.summary).toMatch(/cosplay/i)
-    expect(quirkz?.stack).toEqual(
+  it('describes the cosplay platform without a product name', () => {
+    const project = getProjectBySlug('cosplay-platform')
+    expect(project?.title).toBe('Cosplay Platform')
+    expect(project?.year).toBe('2024–2025')
+    expect(project?.publisher).toBe('CodeStream')
+    expect(project?.summary).toMatch(/cosplay/i)
+    expect(JSON.stringify(project)).not.toMatch(/quirk/i)
+    expect(project?.stack).toEqual(
       expect.arrayContaining([
         'React Native',
         'ASP.NET Core',
@@ -25,7 +26,7 @@ describe('project content', () => {
         'Docker',
       ]),
     )
-    const body = quirkz?.sections.map((section) => section.body).join(' ')
+    const body = project?.sections.map((section) => section.body).join(' ')
     expect(body).toMatch(/messaging/i)
     expect(body).toMatch(/eventually consistent/i)
     expect(body).toMatch(/judg/i)
