@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { MetaChip } from "@/components/MetaChip";
 import { Section } from "@/components/Section";
 import { buildSeoHead } from "@/components/Seo";
+import { ProjectList } from "@/components/ProjectList";
 import { SkillGroup } from "@/components/SkillGroup";
 import { WorkCard } from "@/components/WorkCard";
 import { getFeaturedWork, getRecentRoles, site, skillGroups } from "@/content";
@@ -126,6 +127,14 @@ function Home() {
             Full experience
           </Button>
         </div>
+      </Section>
+
+      <Section
+        eyebrow="Projects"
+        title="End-to-end systems"
+        description="The problem, the design, and what shipped."
+      >
+        <ProjectList />
       </Section>
 
       {/* Selected work */}

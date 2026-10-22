@@ -3,6 +3,8 @@
  *
  * WORK_SLUGS must stay in sync with src/content/work.ts
  * (asserted by tests/work.test.ts).
+ * PROJECT_SLUGS must stay in sync with src/content/projects.ts
+ * (asserted by tests/projects.test.ts).
  */
 import { writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -19,9 +21,13 @@ const WORK_SLUGS = [
   'anglo-live-exposure',
 ]
 
+// Must match getAllProjects().map(p => p.slug) — see tests/projects.test.ts
+const PROJECT_SLUGS = ['quirkz', 'contractorpro', 'carwashpro']
+
 const urls = [
   ...staticRoutes,
   ...WORK_SLUGS.map((slug) => `/work/${slug}`),
+  ...PROJECT_SLUGS.map((slug) => `/projects/${slug}`),
 ]
 
 const body = `<?xml version="1.0" encoding="UTF-8"?>

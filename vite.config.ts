@@ -3,11 +3,17 @@ import { defineConfig } from 'vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
+import { getAllProjects } from './src/content/projects'
 import { getAllWork } from './src/content/work'
 import { shouldPrerenderPath } from './src/lib/prerender'
 
 const workPages = getAllWork().map((w) => ({
   path: `/work/${w.slug}`,
+  prerender: { enabled: true },
+}))
+
+const projectPages = getAllProjects().map((project) => ({
+  path: `/projects/${project.slug}`,
   prerender: { enabled: true },
 }))
 
@@ -29,7 +35,11 @@ export default defineConfig({
     tailwindcss(),
     tanstackStart({
       srcDirectory: 'src',
-      pages: [{ path: '/work', prerender: { enabled: true } }, ...workPages],
+      pages: [
+        { path: '/work', prerender: { enabled: true } },
+        ...workPages,
+        ...projectPages,
+      ],
       prerender: {
         enabled: true,
         autoSubfolderIndex: true,

@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { buildSeoHead } from '@/components/Seo'
+import { ProjectList } from '@/components/ProjectList'
 import { WorkCard } from '@/components/WorkCard'
 import { getAllWork } from '@/content'
 
@@ -38,6 +39,16 @@ function WorkIndexPage() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-20 border-t border-border">
+          <Section
+            title="Projects"
+            description="End-to-end systems: the problem, the design, and what shipped."
+            className="pb-0"
+          >
+            <ProjectList />
+          </Section>
+        </div>
       </Section>
     </Container>
   )
