@@ -113,7 +113,7 @@ function AboutPage() {
           <p className="font-mono text-xs uppercase tracking-wider text-text-subtle">
             Contact
           </p>
-          <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
             {socialLinks.map((item) => (
               <li key={item.label}>
                 <p className="font-mono text-xs uppercase tracking-wider text-text-subtle">
