@@ -12,8 +12,12 @@ export function ProjectCard({ item }: { item: ProjectItem }) {
       <Card className="flex h-full flex-col gap-3">
         <p className="font-mono text-xs text-text-subtle">
           {item.year}
-          <span aria-hidden="true"> · </span>
-          {item.publisher}
+          {item.publisher !== item.title ? (
+            <>
+              <span aria-hidden="true"> · </span>
+              {item.publisher}
+            </>
+          ) : null}
         </p>
         <h3 className="text-base font-semibold text-text transition-colors group-hover:text-accent">
           {item.title}

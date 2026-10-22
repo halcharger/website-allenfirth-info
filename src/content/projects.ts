@@ -115,6 +115,40 @@ export const projects: ProjectItem[] = [
       },
     ],
   },
+  {
+    slug: 'digitaltwin',
+    title: 'DigitalTwin',
+    year: '2022',
+    publisher: 'DigitalTwin',
+    summary:
+      'Tracked tagged assets in real time with Bluetooth Low Energy tags, fixed gateways, and SignalR location updates. Live inventory, missing-asset alerts, and mobile inventory scans on a multi-tenant platform.',
+    stack: [
+      'ASP.NET Core 5',
+      'SignalR',
+      'SQL Server',
+      'Azure',
+      'Angular',
+      'Xamarin',
+      'Azure Functions',
+      'MediatR',
+      'Azure AD B2C',
+    ],
+    order: -1,
+    sections: [
+      {
+        heading: 'Context',
+        body: 'Co-founded DigitalTwin and led it as architect and lead developer. The platform tracked tagged assets in real time using Bluetooth Low Energy tags and fixed gateways, with live inventory, missing-asset alerts, and mobile inventory scans.',
+      },
+      {
+        heading: 'Approach',
+        body: 'Designed as a multi-tenant system on ASP.NET Core 5, SQL Server, and Azure. Ingest, tenant, reporting, and management APIs followed a CQRS design built with MediatR, with separate read and write models, audit trails, and pre-aggregated reporting. Azure Functions handled messaging and PDF generation. SignalR pushed live updates of asset locations and tracking. The web consoles were Angular, the mobile app was Xamarin, and sign-in used Azure AD B2C.',
+      },
+      {
+        heading: 'Outcome',
+        body: 'A partner productised it as a retail trolley-management system and acquired the platform in 2022. Led the full technical handover: an architecture and code walkthrough, followed by transferring the source control, the Azure subscription, the pipelines, the mobile app and DNS.',
+      },
+    ],
+  },
 ]
 
 export function getAllProjects(): ProjectItem[] {

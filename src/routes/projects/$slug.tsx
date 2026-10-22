@@ -28,8 +28,26 @@ export const Route = createFileRoute('/projects/$slug')({
   notFoundComponent: () => <NotFound>Project not found</NotFound>,
 })
 
+function PublisherCredit({ publisher }: { publisher: string }) {
+  if (publisher === 'CodeStream') {
+    return (
+      <a
+        href={site.links.codestream}
+        target="_blank"
+        rel="noreferrer"
+        className="transition-colors hover:text-accent"
+      >
+        {publisher}
+      </a>
+    )
+  }
+
+  return <span>{publisher}</span>
+}
+
 function ProjectDetailPage() {
   const item = Route.useLoaderData()
+  const showPublisher = item.publisher !== item.title
 
   return (
     <Container>
@@ -51,17 +69,14 @@ function ProjectDetailPage() {
             {item.title}
           </h1>
           <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm text-text-muted">
-            <a
-              href={site.links.codestream}
-              target="_blank"
-              rel="noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              {item.publisher}
-            </a>
-            <span aria-hidden="true" className="text-text-subtle">
-              ·
-            </span>
+            {showPublisher ? (
+              <>
+                <PublisherCredit publisher={item.publisher} />
+                <span aria-hidden="true" className="text-text-subtle">
+                  ·
+                </span>
+              </>
+            ) : null}
             <span>{item.year}</span>
             {item.website ? (
               <>
