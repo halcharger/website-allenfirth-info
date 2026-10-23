@@ -19,14 +19,17 @@ describe('project content', () => {
     expect(JSON.stringify(project)).not.toMatch(/quirk/i)
     expect(project?.stack).toEqual(
       expect.arrayContaining([
-        'React Native',
+        'Flutter',
         'ASP.NET Core',
         'Azure Cosmos DB',
         'Azure DevOps',
         'Docker',
       ]),
     )
+    expect(project?.stack).not.toContain('React Native')
     const body = project?.sections.map((section) => section.body).join(' ')
+    expect(body).toMatch(/Flutter application for Android and iOS/)
+    expect(body).not.toMatch(/React Native/)
     expect(body).toMatch(/messaging/i)
     expect(body).toMatch(/eventually consistent/i)
     expect(body).toMatch(/judg/i)

@@ -20,7 +20,7 @@ export const projects: ProjectItem[] = [
     summary:
       'A social platform for cosplayers: profiles with photos and contest history, contest entry, on-platform judging, and results, for competitions at large fan conventions.',
     stack: [
-      'React Native',
+      'Flutter',
       'C#',
       'ASP.NET Core',
       'Azure Cosmos DB',
@@ -35,7 +35,7 @@ export const projects: ProjectItem[] = [
       },
       {
         heading: 'Approach',
-        body: 'The client is a React Native application for Android and iOS. A C# / ASP.NET Core API sits behind it, with Azure Cosmos DB as the datastore, hosted on Azure. Distinct components of the application communicate through messaging, and data records are eventually consistent. Azure DevOps ran the CI/CD pipeline, from unit tests through integration tests, with Docker in the delivery setup.',
+        body: 'The client is a Flutter application for Android and iOS. A C# / ASP.NET Core API sits behind it, with Azure Cosmos DB as the datastore, hosted on Azure. Distinct components of the application communicate through messaging, and data records are eventually consistent. Azure DevOps ran the CI/CD pipeline, from unit tests through integration tests, with Docker in the delivery setup.',
       },
       {
         heading: 'Outcome',
