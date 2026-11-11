@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { getAllProjects, getProjectBySlug } from '../src/content'
 
 // Must match PROJECT_SLUGS in scripts/generate-sitemap.mjs
-const SITEMAP_SLUGS = ['cosplay-platform', 'contractorpro', 'carwashpro', 'digitaltwin']
+const SITEMAP_SLUGS = ['cosplay-platform', 'contractorpro', 'carwashboss', 'digitaltwin']
 
 describe('project content', () => {
   it('returns unique slugs', () => {
@@ -62,11 +62,14 @@ describe('project content', () => {
     expect(body).toMatch(/quote/i)
   })
 
-  it('describes CarwashPro as a carwash queue application', () => {
-    const project = getProjectBySlug('carwashpro')
-    expect(project?.title).toBe('CarwashPro')
+  it('describes CarwashBoss as a carwash queue application', () => {
+    const project = getProjectBySlug('carwashboss')
+    expect(project?.title).toBe('CarwashBoss')
     expect(project?.year).toBe('2026')
     expect(project?.publisher).toBe('CodeStream')
+    expect(project?.website?.href).toBe('https://carwashboss.co.za')
+    expect(project?.website?.label).toBe('carwashboss.co.za')
+    expect(JSON.stringify(project)).not.toMatch(/CarwashPro|carwashpro/)
     expect(project?.summary).toMatch(/small carwash businesses/i)
     expect(JSON.stringify(project)).not.toMatch(/in development|not yet released|unreleased/i)
     expect(project?.stack).toEqual(

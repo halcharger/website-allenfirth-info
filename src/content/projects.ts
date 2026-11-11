@@ -82,10 +82,14 @@ export const projects: ProjectItem[] = [
     ],
   },
   {
-    slug: 'carwashpro',
-    title: 'CarwashPro',
+    slug: 'carwashboss',
+    title: 'CarwashBoss',
     year: '2026',
     publisher: 'CodeStream',
+    website: {
+      label: 'carwashboss.co.za',
+      href: 'https://carwashboss.co.za',
+    },
     summary:
       'A mobile web application for small carwash businesses. Each car is scanned in from its licence disc and tracked from the queue through the wash to collection, with a text message at the key stages.',
     stack: [
@@ -103,7 +107,7 @@ export const projects: ProjectItem[] = [
     sections: [
       {
         heading: 'Context',
-        body: 'CarwashPro is a browser application for small carwash businesses. Staff scan a car’s licence disc to bring it into the system, then track it as it is queued, as the wash starts, as the wash is completed, and as the customer collects it.',
+        body: 'CarwashBoss is a browser application for small carwash businesses. Staff scan a car’s licence disc to bring it into the system, then track it as it is queued, as the wash starts, as the wash is completed, and as the customer collects it.',
       },
       {
         heading: 'Approach',
